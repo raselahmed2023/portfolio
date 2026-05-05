@@ -6,8 +6,11 @@
   --color-background-light: #f8fafc;
   --color-background-dark: #0a0a0a;
 
-  --font-display: "JetBrains Mono", monospace;
+  --font-heading: "Inter", sans-serif;
+  --font-display: "Space Mono", monospace;
   --font-sans: "Inter", sans-serif;
+
+  --variant-dark: .dark &;
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
@@ -31,6 +34,10 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+.heading-font {
+  font-family: var(--font-heading);
+}
+
 .mono-font {
   font-family: var(--font-display);
 }
@@ -50,5 +57,27 @@ body {
   html {
     scroll-behavior: smooth;
   }
+}
+
+@layer utilities {
+  .animate-scan-slow {
+    animation: scan 8s linear infinite;
+  }
+  .animate-scan-fast {
+    animation: scan 5s linear infinite;
+  }
+  .animate-scan-horizontal {
+    animation: scan-horizontal 12s linear infinite;
+  }
+}
+
+@keyframes scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+@keyframes scan-horizontal {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }
 

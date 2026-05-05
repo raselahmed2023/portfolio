@@ -1,16 +1,20 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Inter, Space_Mono } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
+import CustomCursor from "@/components/CustomCursor";
+import MovingLines from "@/components/MovingLines";
+import ClickEffect from "@/components/ClickEffect";
 
 const inter = Inter({
   variable: "--font-sans",
   subsets: ["latin"],
 });
 
-const jetbrainsMono = JetBrains_Mono({
+const spaceMono = Space_Mono({
   variable: "--font-display",
   subsets: ["latin"],
+  weight: ["400", "700"],
 });
 
 export const metadata: Metadata = {
@@ -26,7 +30,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
+      className={`${inter.variable} ${spaceMono.variable} h-full antialiased`}
     >
       <head>
         <link
@@ -35,6 +39,9 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col relative overflow-x-hidden">
+        <CustomCursor />
+        <MovingLines />
+        <ClickEffect />
         <SmoothScroll>
           <div className="fixed inset-0 pointer-events-none bg-noise z-0"></div>
           {children}

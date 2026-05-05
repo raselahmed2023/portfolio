@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import ProjectCard from './ProjectCard';
 
 export const Projects = () => {
@@ -143,7 +144,7 @@ export const Projects = () => {
     <section className="mb-20" id="projects" ref={sectionRef}>
       <div className="flex items-center gap-3 mb-8">
         <span className="material-symbols-outlined text-primary">folder</span>
-        <h2 className="mono-font text-2xl font-bold">Projects</h2>
+        <h2 className="heading-font text-3xl font-extrabold uppercase tracking-tight">Projects</h2>
       </div>
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
         {projects.map((project) => (
@@ -170,7 +171,7 @@ export const TechStack = () => {
     <section className="mb-20" id="tech-stack">
       <div className="flex items-center gap-3 mb-8">
         <span className="material-symbols-outlined text-primary">data_object</span>
-        <h2 className="mono-font text-2xl font-bold">Tech Stack</h2>
+        <h2 className="heading-font text-3xl font-extrabold uppercase tracking-tight">Tech Stack</h2>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {techs.map((tech, i) => (
@@ -250,7 +251,7 @@ export const Experience = () => {
     <section className="mb-20" id="experience" ref={sectionRef}>
       <div className="flex items-center gap-3 mb-8">
         <span className="material-symbols-outlined text-primary">work</span>
-        <h2 className="mono-font text-2xl font-bold">Experience</h2>
+        <h2 className="heading-font text-3xl font-extrabold uppercase tracking-tight">Experience</h2>
       </div>
       <div className="space-y-12 relative">
         {/* Progress Line */}
@@ -309,7 +310,7 @@ export const Skills = () => {
     <section className="mb-20" id="skills">
       <div className="flex items-center gap-3 mb-8">
         <span className="material-symbols-outlined text-primary">verified</span>
-        <h2 className="mono-font text-2xl font-bold">Skills</h2>
+        <h2 className="heading-font text-3xl font-extrabold uppercase tracking-tight">Skills</h2>
       </div>
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {categories.map((cat) => (
@@ -362,7 +363,7 @@ export const Education = () => {
     <section className="mb-20" id="education">
       <div className="flex items-center gap-3 mb-8">
         <span className="material-symbols-outlined text-primary">school</span>
-        <h2 className="mono-font text-2xl font-bold">Education</h2>
+        <h2 className="heading-font text-3xl font-extrabold uppercase tracking-tight">Education</h2>
       </div>
       <div className="grid md:grid-cols-2 gap-8">
         {education.map((edu, i) => (
@@ -393,7 +394,7 @@ export const AboutMe = () => {
     <section className="mb-20" id="about">
       <div className="flex items-center gap-3 mb-8">
         <span className="material-symbols-outlined text-primary">person</span>
-        <h2 className="mono-font text-2xl font-bold">About Me</h2>
+        <h2 className="heading-font text-3xl font-extrabold uppercase tracking-tight">About Me</h2>
       </div>
       <div className="grid md:grid-cols-2 gap-12 items-center">
         <motion.div 
@@ -434,10 +435,7 @@ export const AboutMe = () => {
         >
           <div className="relative">
             <div className="absolute -inset-4 bg-gradient-to-tr from-primary to-secondary opacity-20 blur-2xl rounded-full"></div>
-            <motion.img 
-              alt="Angel Garcia" 
-              className="relative w-64 h-64 md:w-80 md:h-80 rounded-3xl object-cover shadow-2xl" 
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHGKbkS1eoh2NrnRi7WaueASUzfCMyrwoUOUSlOPrlK-TtDsv4RbljcNWLJz_1JCO-IVCL2eMJdg1KFaWdjk_tQWpFxVkBG0ssRlcFFY_Lxwd64G7ngP2H_ZJx17wqEXKMivtZTqQprA-ZDYhbC0HCu_RMxLZBlw-dFJyD7GoakKUXStnJN_pl8nJx6uNJYni6l42-KNqJDZUKSGl5Ec4-JuFvRGdYyoQZIEKaWtUiXIhVlxDwzuOv9HlTfKKgq10w9UA70JaxffI"
+            <motion.div
               animate={{ 
                 rotate: [3, -3, 3],
               }}
@@ -447,7 +445,15 @@ export const AboutMe = () => {
                 ease: "easeInOut" 
               }}
               whileHover={{ rotate: 0, scale: 1.05 }}
-            />
+              className="relative w-64 h-64 md:w-80 md:h-80"
+            >
+              <Image 
+                alt="Angel Garcia" 
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHGKbkS1eoh2NrnRi7WaueASUzfCMyrwoUOUSlOPrlK-TtDsv4RbljcNWLJz_1JCO-IVCL2eMJdg1KFaWdjk_tQWpFxVkBG0ssRlcFFY_Lxwd64G7ngP2H_ZJx17wqEXKMivtZTqQprA-ZDYhbC0HCu_RMxLZBlw-dFJyD7GoakKUXStnJN_pl8nJx6uNJYni6l42-KNqJDZUKSGl5Ec4-JuFvRGdYyoQZIEKaWtUiXIhVlxDwzuOv9HlTfKKgq10w9UA70JaxffI"
+                fill
+                className="rounded-3xl object-cover shadow-2xl" 
+              />
+            </motion.div>
           </div>
         </motion.div>
       </div>

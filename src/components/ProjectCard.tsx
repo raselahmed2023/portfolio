@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 interface ProjectProps {
   title: string;
@@ -17,17 +18,22 @@ const ProjectCard = ({ title, tags, description, image }: ProjectProps) => {
       transition={{ duration: 0.4, ease: [0.21, 0.47, 0.32, 0.98] }}
     >
       <div className="aspect-video relative overflow-hidden bg-slate-100 dark:bg-slate-800">
-        <motion.img 
-          alt={title} 
-          className="object-cover w-full h-full" 
-          src={image}
+        <motion.div
+          className="w-full h-full relative"
           whileHover={{ scale: 1.1 }}
           transition={{ duration: 0.8 }}
-        />
+        >
+          <Image 
+            alt={title} 
+            src={image}
+            fill
+            className="object-cover" 
+          />
+        </motion.div>
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
       </div>
       <div className="p-6">
-        <h3 className="mono-font font-bold text-lg mb-2">{title}</h3>
+        <h3 className="heading-font font-bold text-lg mb-2">{title}</h3>
         <div className="flex gap-2 mb-4">
           {tags.map((tag) => (
             <span 

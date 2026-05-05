@@ -5,8 +5,8 @@ import { motion, useSpring } from 'framer-motion';
 
 const CustomCursor = () => {
   const [isPointer, setIsPointer] = useState(false);
-  const cursorX = useSpring(0, { damping: 20, stiffness: 250 });
-  const cursorY = useSpring(0, { damping: 20, stiffness: 250 });
+  const cursorX = useSpring(0, { damping: 40, stiffness: 150 });
+  const cursorY = useSpring(0, { damping: 40, stiffness: 150 });
 
   useEffect(() => {
     const moveCursor = (e: MouseEvent) => {

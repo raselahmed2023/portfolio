@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 const Hero = () => {
   const containerVariants = {
@@ -46,15 +47,18 @@ const Hero = () => {
         }}
       >
         <div className="absolute inset-0 bg-primary blur-3xl opacity-20 rounded-full"></div>
-        <img 
+        <Image 
           alt="Profile" 
+          width={128}
+          height={128}
+          priority
           className="relative w-32 h-32 rounded-full border-4 border-slate-200 dark:border-slate-800 object-cover shadow-2xl" 
           src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDK-lMI8_nOLhdAfbU4JMDrLmElog5ggn2HG7aMTe0IO90BmeJHCWoHGqO3LyVhomeSGZq83PXQaFHgEdMEK82yXJ-YUEqIEqXNjaZUyD9n78L8EvpFbVS2d4IReEerxbS21o34EIOFSZIqGNTXJ8H-Bxbkj5YBHfmW2QE48IyKuL0cHPUqRrnotJrveP1FsNvgQXAAp5UrGkYwJOvzrWfvn3yTGP8XAFHM9i3-gsFAl327RlPKTGHblhXWPwhsiSRtevJti7Knhk"
         />
       </motion.div>
 
       <motion.h1 
-        className="text-3xl md:text-5xl font-bold mb-6 max-w-3xl mx-auto leading-tight"
+        className="text-4xl md:text-6xl font-extrabold mb-6 max-w-4xl mx-auto leading-tight heading-font"
         variants={itemVariants}
       >
         Building <span className="gradient-text">modern web applications</span> with a focus on aesthetics, functionality and accessibility.
