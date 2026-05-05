@@ -22,7 +22,7 @@ const Navbar = () => {
       <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <div className="mono-font text-xl font-bold flex items-center gap-2">
           <span className="text-primary">{"{"}</span>
-          <span className="dark:text-white">A</span>
+          <span className="dark:text-white">RA</span>
           <span className="text-secondary">{"}"}</span>
         </div>
         <div className="hidden md:flex items-center gap-8 mono-font text-sm">

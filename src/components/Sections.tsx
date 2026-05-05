@@ -201,16 +201,34 @@ export const Experience = () => {
 
   const experiences = [
     {
-      company: "CreativeTech Innovations",
-      period: "Jan 2024 - Present",
-      role: "Senior Web Developer",
-      description: "Led the development of high-performing web applications with a focus on user-friendly designs and efficient code. Implemented advanced frontend technologies, resulting in a 30% reduction in page load times."
+      company: "Islamic University Accounting Club",
+      period: "Sep 2025 - Present",
+      role: "Finance Secretary",
+      description: "Managing financial records, budgeting, and fund allocation to ensure transparency. Supporting strategic decision-making through financial planning and reporting."
     },
     {
-      company: "TechNova Solutions",
-      period: "April 2020 - Dec 2023",
-      role: "Lead Frontend Developer",
-      description: "Designed and implemented scalable frontend architectures, enhancing performance and user experience. Increased user engagement by 25% through dynamic UI components."
+      company: "Paridhi",
+      period: "Jan 2025 - Present",
+      role: "Co-Founder & Assistant Director",
+      description: "Promoting a culture of reading and critical thinking through discussions on literature, philosophy, history, and international relations."
+    },
+    {
+      company: "Requin BD",
+      period: "April 2025 - Sep 2025",
+      role: "Content Writing Intern",
+      description: "Researched, wrote, and edited engaging content, including short-form fact pieces and video scripts for diverse audiences."
+    },
+    {
+      company: "Islamic University Accounting Club",
+      period: "July 2024 - Aug 2025",
+      role: "Design & IT Secretary",
+      description: "Created visual content, managed social media presence, and oversaw IT tasks to enhance digital communication."
+    },
+    {
+      company: "Cancer Awareness Program for Women",
+      period: "Jun 2023 - Jun 2024",
+      role: "Asst. Communication Affairs Secretary",
+      description: "Managed content writing and communication to engage members and support awareness initiatives through personalized outreach."
     }
   ];
 
@@ -261,7 +279,7 @@ export const Experience = () => {
         ></div>
         
         {experiences.map((exp, index) => (
-          <div key={exp.company} className={`experience-item relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group`}>
+          <div key={`${exp.company}-${exp.role}`} className={`experience-item relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group`}>
             <div className="flex items-center justify-center w-10 h-10 rounded-full border border-slate-200 dark:border-slate-800 bg-background-light dark:bg-background-dark text-primary shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
               <span className="w-3 h-3 bg-primary rounded-full"></span>
             </div>
@@ -284,26 +302,26 @@ export const Experience = () => {
 
 export const Skills = () => {
   const categories = [
-    {
-      name: "Design",
-      color: "bg-primary",
-      skills: ["UI/UX Design", "Figma Prototyping", "Responsive Web"]
-    },
-    {
-      name: "Frontend",
-      color: "bg-secondary",
-      skills: ["Component Systems", "State Management", "Animation/GSAP"]
-    },
-    {
-      name: "Backend",
-      color: "bg-primary",
-      skills: ["API Development", "Database Schema", "Cloud Computing"]
-    },
-    {
-      name: "Soft Skills",
-      color: "bg-secondary",
-      skills: ["Team Leadership", "Agile/Scrum", "Client Relation"]
-    }
+      {
+        name: "Frontend",
+        color: "bg-primary",
+        skills: ["HTML", "CSS (Tailwind)", "JavaScript (ES6+)", "React.js (Learning)"]
+      },
+      {
+        name: "Data & Tools",
+        color: "bg-secondary",
+        skills: ["Data Analysis", "Git & GitHub", "VS Code", "Microsoft Office"]
+      },
+      {
+        name: "Management",
+        color: "bg-primary",
+        skills: ["Leadership", "Team Management", "Time Management", "Negotiation"]
+      },
+      {
+        name: "Creative",
+        color: "bg-secondary",
+        skills: ["Content Writing", "Critical Thinking", "Video Editing", "Communication"]
+      }
   ];
 
   return (
@@ -340,22 +358,31 @@ export const Skills = () => {
 export const Education = () => {
   const education = [
     {
-      title: "B.S. in Computer Science",
-      school: "University of Technology, San Francisco",
-      period: "2016 — 2020",
-      gpa: "GPA 3.8/4.0",
-      extra: "Dean's List",
+      title: "MBA in Accounting & Information Systems",
+      school: "Islamic University, Kushtia",
+      period: "Feb 2026 - Present",
+      gpa: "Ongoing",
+      extra: "Research & Data Focus",
       color: "bg-primary/5",
       textColor: "text-primary"
     },
     {
-      title: "Advanced Frontend Cert.",
-      school: "Global Tech Institute",
-      period: "2021",
-      gpa: "Verified",
-      extra: "Cloud Specialist",
+      title: "BBA in Accounting & Information Systems",
+      school: "Islamic University, Kushtia",
+      period: "Mar 2022 - Feb 2026",
+      gpa: "Final Year Focus",
+      extra: "Leadership & IT",
       color: "bg-secondary/5",
       textColor: "text-secondary"
+    },
+    {
+      title: "Higher Secondary Certificate (Science)",
+      school: "Kushtia Government College",
+      period: "2017 — 2019",
+      gpa: "GPA 5.00/5.00",
+      extra: "Science Background",
+      color: "bg-primary/5",
+      textColor: "text-primary"
     }
   ];
 
@@ -368,7 +395,7 @@ export const Education = () => {
       <div className="grid md:grid-cols-2 gap-8">
         {education.map((edu, i) => (
           <motion.div 
-            key={edu.title} 
+            key={`${edu.title}-${edu.school}`} 
             className="p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl relative overflow-hidden group text-slate-900 dark:text-slate-100"
             initial={{ opacity: 0, x: i === 0 ? -30 : 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -405,16 +432,37 @@ export const AboutMe = () => {
           transition={{ duration: 0.8 }}
         >
           <p className="mb-6 leading-relaxed">
-            I'm Angel Garcia, a <span className="text-primary font-semibold">Web Developer</span> with a passion for <span className="text-secondary">Transforming Ideas into Interactive Experiences</span>. While early in my career, I bring fresh perspectives and a dedication to creating intuitive, polished <span className="text-primary">Applications That Truly Connect With Users</span>.
+            I'm <span className="text-primary font-semibold">Rasel Ahmed</span>, a final-year BBA student at Islamic University, Kushtia, majoring in <span className="text-secondary">Accounting and Information Systems</span>. With leadership, research, and IT experience, I bring combined strengths in business, digital skills, and organizational management.
           </p>
           <p className="mb-6 leading-relaxed text-slate-500 dark:text-slate-400">
-            Every line of code is a step toward mastering my craft, and I'm excited to deliver projects that are both beautiful and functional. Beyond my frontend focus, I also draw on experience with backend and full-stack projects.
+            Passionate about reading, programming, and personal growth, I aim to grow as a versatile professional, ready to embrace new challenges and contribute meaningfully in academic, organizational, and professional domains.
           </p>
+          <div className="mb-8">
+            <h4 className="mono-font text-sm font-bold uppercase tracking-widest text-primary mb-4">Current Goals</h4>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-slate-500 dark:text-slate-400">
+              <li className="flex items-center gap-2">
+                <span className="material-symbols-outlined text-xs text-primary">rocket_launch</span>
+                Job-Ready Frontend Developer
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="material-symbols-outlined text-xs text-primary">analytics</span>
+                Improve Data Analysis Skills
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="material-symbols-outlined text-xs text-primary">podcasts</span>
+                Start Educational Podcast
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="material-symbols-outlined text-xs text-primary">groups</span>
+                Build Student Community
+              </li>
+            </ul>
+          </div>
           <div className="flex gap-4">
             {[
-              { val: "4+", label: "Years Experience" },
-              { val: "50+", label: "Projects Built" },
-              { val: "20+", label: "Happy Clients" }
+              { val: "3+", label: "Years Experience" },
+              { val: "30+", label: "Projects Built" },
+              { val: "15+", label: "Happy Clients" }
             ].map((stat, i) => (
               <div key={stat.label} className="flex items-center gap-4">
                 <div className="text-center">
@@ -448,8 +496,8 @@ export const AboutMe = () => {
               className="relative w-64 h-64 md:w-80 md:h-80"
             >
               <Image 
-                alt="Angel Garcia" 
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHGKbkS1eoh2NrnRi7WaueASUzfCMyrwoUOUSlOPrlK-TtDsv4RbljcNWLJz_1JCO-IVCL2eMJdg1KFaWdjk_tQWpFxVkBG0ssRlcFFY_Lxwd64G7ngP2H_ZJx17wqEXKMivtZTqQprA-ZDYhbC0HCu_RMxLZBlw-dFJyD7GoakKUXStnJN_pl8nJx6uNJYni6l42-KNqJDZUKSGl5Ec4-JuFvRGdYyoQZIEKaWtUiXIhVlxDwzuOv9HlTfKKgq10w9UA70JaxffI"
+                alt="Rasel Ahmed" 
+                src="/profile.jpg"
                 fill
                 className="rounded-3xl object-cover shadow-2xl" 
               />

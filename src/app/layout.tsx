@@ -18,8 +18,8 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio | Web Developer",
-  description: "Building modern web applications with a focus on aesthetics, functionality and accessibility.",
+  title: "Rasel Ahmed | Full Stack Developer",
+  description: "Portfolio of Rasel Ahmed, a Full Stack Developer building modern web applications with a focus on aesthetics and functionality.",
 };
 
 export default function RootLayout({
@@ -36,6 +36,10 @@ export default function RootLayout({
         <link
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
           rel="stylesheet"
+        />
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         />
       </head>
       <body className="min-h-full flex flex-col relative overflow-x-hidden">

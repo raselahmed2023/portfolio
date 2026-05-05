@@ -48,12 +48,12 @@ const Hero = () => {
       >
         <div className="absolute inset-0 bg-primary blur-3xl opacity-20 rounded-full"></div>
         <Image 
-          alt="Profile" 
-          width={128}
-          height={128}
+          alt="Rasel Ahmed" 
+          width={160}
+          height={160}
           priority
-          className="relative w-32 h-32 rounded-full border-4 border-slate-200 dark:border-slate-800 object-cover shadow-2xl" 
-          src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDK-lMI8_nOLhdAfbU4JMDrLmElog5ggn2HG7aMTe0IO90BmeJHCWoHGqO3LyVhomeSGZq83PXQaFHgEdMEK82yXJ-YUEqIEqXNjaZUyD9n78L8EvpFbVS2d4IReEerxbS21o34EIOFSZIqGNTXJ8H-Bxbkj5YBHfmW2QE48IyKuL0cHPUqRrnotJrveP1FsNvgQXAAp5UrGkYwJOvzrWfvn3yTGP8XAFHM9i3-gsFAl327RlPKTGHblhXWPwhsiSRtevJti7Knhk"
+          className="relative w-40 h-40 rounded-full border-4 border-slate-200 dark:border-slate-800 object-cover shadow-2xl" 
+          src="/profile.jpg"
         />
       </motion.div>
 
@@ -61,7 +61,7 @@ const Hero = () => {
         className="text-4xl md:text-6xl font-extrabold mb-6 max-w-4xl mx-auto leading-tight heading-font"
         variants={itemVariants}
       >
-        Building <span className="gradient-text">modern web applications</span> with a focus on aesthetics, functionality and accessibility.
+        I'm <span className="gradient-text">Rasel Ahmed</span>, a Frontend Developer, Data Enthusiast & Research-Oriented Learner.
       </motion.h1>
 
       <motion.div 
@@ -70,23 +70,32 @@ const Hero = () => {
       >
         <a 
           className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-6 py-2 rounded-full flex items-center gap-2 hover:border-primary transition-all shadow-sm group text-slate-900 dark:text-slate-100" 
-          href="mailto:contact@example.com"
+          href="mailto:raselahmediu22@gmail.com"
         >
           <span className="material-symbols-outlined text-lg group-hover:rotate-12 transition-transform text-slate-600 dark:text-slate-400">mail</span>
           Contact me
         </a>
         <div className="flex gap-4 ml-2">
-          {['code', 'link', 'search'].map((icon, i) => (
-            <motion.a 
-              key={icon}
-              className="text-slate-500 hover:text-primary transition-colors" 
-              href="#"
-              whileHover={{ y: -3 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <span className="material-symbols-outlined">{icon}</span>
-            </motion.a>
-          ))}
+          <motion.a 
+            className="text-slate-500 hover:text-primary transition-colors flex items-center gap-1" 
+            href="https://github.com/raselahmed2023"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ y: -3 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <i className="fa-brands fa-github text-xl"></i>
+          </motion.a>
+          <motion.a 
+            className="text-slate-500 hover:text-primary transition-colors flex items-center gap-1" 
+            href="https://www.linkedin.com/in/rasel-ahmed06/"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ y: -3 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <i className="fa-brands fa-linkedin text-xl"></i>
+          </motion.a>
         </div>
       </motion.div>
     </motion.section>
