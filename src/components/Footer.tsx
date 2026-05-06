@@ -4,7 +4,7 @@ const Footer = () => {
       <div className="max-w-4xl mx-auto text-center">
         <h2 className="mono-font text-3xl font-bold mb-6">Get In Touch</h2>
         <p className="text-slate-500 dark:text-slate-400 mb-10 max-w-lg mx-auto">
-          Focused on <span className="text-primary">Fontend Development</span>.<br />
+          Focused on <span className="text-primary">Frontend Development</span>.<br />
           Let's Connect and Bring Your Project To Life!
         </p>
         <div className="flex flex-wrap justify-center gap-4 mb-16">
