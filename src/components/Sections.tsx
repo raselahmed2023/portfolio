@@ -5,155 +5,208 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import ProjectCard from './ProjectCard';
 
-export const Projects = () => {
-  const sectionRef = useRef<HTMLElement>(null);
+
+interface ProjectProps {
+  title: string;
+  tags: { name: string; color: string }[];
+  description: string;
+  image: string;
+  liveLink: string;
+  repoLink: string;
+}
+
+const ProjectCard = ({ title, tags, description, image, liveLink, repoLink }: ProjectProps) => {
+  return (
+    <motion.div 
+      className="project-card group bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden hover:border-primary/50 transition-all shadow-lg hover:shadow-primary/5 text-slate-900 dark:text-slate-100 flex flex-col"
+      whileHover={{ y: -10, scale: 1.02 }}
+      transition={{ duration: 0.4, ease: [0.21, 0.47, 0.32, 0.98] }}
+    >
+      <div className="aspect-video relative overflow-hidden bg-slate-100 dark:bg-slate-800">
+        <motion.div
+          className="w-full h-full relative"
+          whileHover={{ scale: 1.1 }}
+          transition={{ duration: 0.8 }}
+        >
+          <Image 
+            alt={title} 
+            src={image}
+            fill
+            className="object-cover" 
+          />
+        </motion.div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-4">
+          <a 
+            href={liveLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-white text-slate-900 px-4 py-2 rounded-full text-sm font-bold hover:bg-primary hover:text-white transition-colors flex items-center gap-2"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Live Demo
+          </a>
+          <a 
+            href={repoLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-slate-900 text-white px-4 py-2 rounded-full text-sm font-bold hover:bg-slate-700 transition-colors flex items-center gap-2"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            Code
+          </a>
+        </div>
+      </div>
+      <div className="p-6 flex-1 flex flex-col">
+        <h3 className="heading-font font-bold text-xl mb-2">{title}</h3>
+        <div className="flex flex-wrap gap-2 mb-4">
+          {tags.map((tag) => (
+            <span 
+              key={tag.name}
+              className={`text-[10px] ${tag.color} px-2 py-1 rounded border uppercase tracking-wider font-bold`}
+            >
+              {tag.name}
+            </span>
+          ))}
+        </div>
+        <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed flex-1">
+          {description}
+        </p>
+        <div className="mt-4 pt-4 border-t border-slate-200 dark:border-slate-800 flex gap-3">
+          <a 
+            href={liveLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex-1 text-center py-2 rounded-lg border border-slate-200 dark:border-slate-700 text-sm font-semibold hover:border-primary hover:text-primary transition-all"
+          >
+            View Live
+          </a>
+          <a 
+            href={repoLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex-1 text-center py-2 rounded-lg bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 text-sm font-semibold hover:opacity-90 transition-all"
+          >
+            View Code
+          </a>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
+ export const Projects = () => {
   const projects = [
     {
-      title: "ZenSerenity Spa",
+      title: "Online Book Borrowing Platform",
       tags: [
-        { name: "Frontend", color: "bg-sky-100 dark:bg-sky-900/30 text-sky-600 dark:text-sky-400 border-sky-200 dark:border-sky-800" },
-        { name: "UI/UX", color: "bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 border-emerald-200 dark:border-emerald-800" }
+        { name: "Next.js", color: "bg-black text-white border-black" },
+        { name: "MongoDB", color: "bg-green-100 text-green-700 border-green-300" },
+        { name: "Tailwind", color: "bg-cyan-100 text-cyan-700 border-cyan-300" },
+        { name: "Better Auth", color: "bg-orange-100 text-orange-700 border-orange-300" },
       ],
-      description: "ZenSerenity Spa is your digital sanctuary for relaxation and wellness. Our website offers a seamless and soothing experience.",
-      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAWGcm3dhE5DqKIaYuS1EOLuLyEvCQm9WXEYtZCMJqpwHI7W1SK1W5ACn-AK6t1V4hBluQmteErQ3z4B4jleppaJtSCXfsmS28TI2tem264YbTDhw9HWmQ0W3kNFQd5QLBJdvsOMHqSbwjDwHRdBXqNpG3P20Z_F8iQPkC1_n6ERXof5Tw7-mo_kwU-pWdaR4cXwcl0jZ-IgYBYiM8-159GFIxzNiabSS1xhCTtKAf_KqMOyWgrK5qP7Fjoz91msoB07H81sK7LkoQ"
+      description: "A modern web app to discover, explore, and borrow books. Features Google OAuth, email authentication, book categories (Story, Tech, Science), and a personal dashboard to track borrowed books. Fully responsive design.",
+      image: "/projects/book-platform.jpg",
+      liveLink: "https://online-book-borrowing-platform-mocha.vercel.app/",
+      repoLink: "https://github.com/raselahmed2023/Online_Book_Borrowing_Platform"
     },
     {
-      title: "SoleElegance Shoes",
+      title: "DigiTools",
       tags: [
-        { name: "E-Commerce", color: "bg-sky-100 dark:bg-sky-900/30 text-sky-600 dark:text-sky-400 border-sky-200 dark:border-sky-800" },
-        { name: "React", color: "bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 border-emerald-200 dark:border-emerald-800" }
+        { name: "React", color: "bg-blue-100 text-blue-700 border-blue-300" },
+        { name: "Tailwind", color: "bg-cyan-100 text-cyan-700 border-cyan-300" },
+        { name: "DaisyUI", color: "bg-purple-100 text-purple-700 border-purple-300" },
+        { name: "JavaScript", color: "bg-yellow-100 text-yellow-700 border-yellow-300" },
       ],
-      description: "SoleElegance Shoes is your one-stop destination for the latest trends in footwear. Modern UI for premium shopping.",
-      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBWvkgXODrZ-TH5fHRU_PU0-GNj9lXJC1SenH_0UENd5P6Xezc3-HEUED0-olPmUdPkFso2_QtBLbHTUqJ0kv6HLNbLG__TLyiadjXNC1o06n9UVFD-W7DAjyeB6aDZiA7ZFcor3NZO37XgdkTS-wUjFtxUrr8ZFV3l_KG9HK5KUY2P0__Ah3TxsoZs7-4tH2iD23vlprxNC1jV22rguH050KeEPD9us-0knV-meKUJAJbcYx3x6CgUL8gKLTraqUaW4p-2NXQRVeE"
+      description: "Digital productivity tools marketplace with 200+ premium tools and 50k+ active users. Features easy purchasing with three payment methods, product cart management, and trial periods. Built with React-Toastify for notifications.",
+      image: "/projects/digitools.jpg",
+      liveLink: "https://digitools-react.netlify.app/",
+      repoLink: "https://github.com/raselahmed2023/digiTools"
     },
     {
-      title: "HarmonyBeat",
+      title: "KeenKeeper",
       tags: [
-        { name: "Web App", color: "bg-sky-100 dark:bg-sky-900/30 text-sky-600 dark:text-sky-400 border-sky-200 dark:border-sky-800" },
-        { name: "API", color: "bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 border-emerald-200 dark:border-emerald-800" }
+        { name: "Next.js", color: "bg-black text-white border-black" },
+        { name: "Tailwind", color: "bg-cyan-100 text-cyan-700 border-cyan-300" },
+        { name: "Recharts", color: "bg-pink-100 text-pink-700 border-pink-300" },
+        { name: "React", color: "bg-blue-100 text-blue-700 border-blue-300" },
       ],
-      description: "HarmonyBeat is your ultimate music companion, designed to elevate your auditory experience with sleek navigation.",
-      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAGzP_iT8TbbQe4IuZZuSbeZrvO6aa9KPHKjAdRpHupJ-wdi0ilQqcSMbnRRvjgD78jxek7cdb7N7CTFROqeiJF8hNXpYKubj-orKc5_S3cZnTEFJzACYwP4pTof4Xhok84YuD1hnf6QNEXOb3-4sThCWYA9xUnNOWquVRex0_n9rgN_4dzZ2dGCFuJJpc3I_qEDxJfDoatyzNkRKsUNsy_7PHpDY8EmWGf_CC30Gji1EI4aCeyf98LRJ55KIpW5_zkIZezDihSL6w"
+      description: "Friendship management dashboard with smart friend tracking, quick check-in systems, and an interactive timeline. Fully responsive with data visualization using Recharts and toast notifications.",
+      image: "/projects/keenkeeper.jpg",
+      liveLink: "https://kin-keeper-seven-self.vercel.app/",
+      repoLink: "https://github.com/raselahmed2023/ken-keeper"
     },
     {
-      title: "Visionary Analytics",
+      title: "GitHub Issue Tracker",
       tags: [
-        { name: "Data Viz", color: "bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 border-purple-200 dark:border-purple-800" },
-        { name: "D3.js", color: "bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 border-amber-200 dark:border-amber-800" }
+        { name: "React", color: "bg-blue-100 text-blue-700 border-blue-300" },
+        { name: "GitHub API", color: "bg-gray-100 text-gray-700 border-gray-300" },
+        { name: "JavaScript", color: "bg-yellow-100 text-yellow-700 border-yellow-300" },
       ],
-      description: "A complex data visualization dashboard for business intelligence and predictive analytics.",
-      image: "https://images.unsplash.com/photo-1551288049-bbbda536339a?auto=format&fit=crop&q=80&w=800"
-    },
-    {
-      title: "EcoSmart Home",
-      tags: [
-        { name: "IoT", color: "bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 border-green-200 dark:border-green-800" },
-        { name: "Mobile", color: "bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 border-blue-200 dark:border-blue-800" }
-      ],
-      description: "Smart home automation system with focus on energy efficiency and sustainable living.",
-      image: "https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&q=80&w=800"
-    },
-    {
-      title: "Pulse Fitness",
-      tags: [
-        { name: "Health", color: "bg-rose-100 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400 border-rose-200 dark:border-rose-800" },
-        { name: "AI", color: "bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 border-indigo-200 dark:border-indigo-800" }
-      ],
-      description: "AI-powered fitness tracker that provides personalized workout plans and real-time form correction.",
-      image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80&w=800"
-    },
-    {
-      title: "Lumina Real Estate",
-      tags: [
-        { name: "Next.js", color: "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700" },
-        { name: "Mapbox", color: "bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 border-orange-200 dark:border-orange-800" }
-      ],
-      description: "A luxury real estate platform with interactive maps and high-resolution 3D virtual tours.",
-      image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=800"
-    },
-    {
-      title: "Skyline Travel",
-      tags: [
-        { name: "React Native", color: "bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 border-blue-200 dark:border-blue-800" },
-        { name: "FastAPI", color: "bg-teal-100 dark:bg-teal-900/30 text-teal-600 dark:text-teal-400 border-teal-200 dark:border-teal-800" }
-      ],
-      description: "A comprehensive travel companion app for booking flights, hotels, and discovering hidden gems.",
-      image: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&q=80&w=800"
-    },
-    {
-      title: "Quantum Secure",
-      tags: [
-        { name: "Security", color: "bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 border-red-200 dark:border-red-800" },
-        { name: "Web3", color: "bg-cyan-100 dark:bg-cyan-900/30 text-cyan-600 dark:text-cyan-400 border-cyan-200 dark:border-cyan-800" }
-      ],
-      description: "An end-to-end encrypted messaging and file storage solution leveraging blockchain technology.",
-      image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800"
-    },
-    {
-      title: "BioTrack Wearable",
-      tags: [
-        { name: "Health", color: "bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 border-green-200 dark:border-green-800" },
-        { name: "Hardware", color: "bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 border-amber-200 dark:border-amber-800" }
-      ],
-      description: "Next-gen wearable tech for continuous health monitoring and early disease detection.",
-      image: "https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?auto=format&fit=crop&q=80&w=800"
-    },
-    {
-      title: "Nexus VR Platform",
-      tags: [
-        { name: "Metaverse", color: "bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 border-indigo-200 dark:border-indigo-800" },
-        { name: "Unity", color: "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700" }
-      ],
-      description: "A collaborative virtual reality platform for remote engineering and design teams.",
-      image: "https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?auto=format&fit=crop&q=80&w=800"
-    },
-    {
-      title: "Aura Smart Lighting",
-      tags: [
-        { name: "Home Automation", color: "bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600 dark:text-yellow-400 border-yellow-200 dark:border-yellow-800" },
-        { name: "Zigbee", color: "bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 border-purple-200 dark:border-purple-800" }
-      ],
-      description: "Adaptive lighting system that syncs with your circadian rhythm for better sleep and productivity.",
-      image: "https://images.unsplash.com/photo-1550989460-0adf9ea622e2?auto=format&fit=crop&q=80&w=800"
+      description: "A streamlined GitHub issue tracking interface that helps developers manage and organize repository issues efficiently. Clean UI with real-time GitHub API integration.",
+      image: "/projects/github-issue.jpg",
+      liveLink: "https://raselahmed2023.github.io/github-issue/",
+      repoLink: "https://github.com/raselahmed2023/github-issue"
     }
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.2,
+      },
+    },
+  };
 
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-    const ctx = gsap.context(() => {
-      gsap.from(".project-card", {
-        y: 40,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 85%",
-        }
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: [0.21, 0.47, 0.32, 0.98] as [number, number, number, number],
+      },
+    },
+  };
 
   return (
-    <section className="mb-20" id="projects" ref={sectionRef}>
-      <div className="flex items-center gap-3 mb-8">
-        <span className="material-symbols-outlined text-primary">folder</span>
-        <h2 className="heading-font text-3xl font-extrabold uppercase tracking-tight">Projects</h2>
-      </div>
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-        {projects.map((project) => (
-          <ProjectCard key={project.title} {...project} />
-        ))}
-      </div>
+    <section id="projects" className="py-20">
+      <motion.div
+        className="max-w-6xl mx-auto px-4"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={containerVariants}
+      >
+        <motion.div variants={itemVariants} className="mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 heading-font flex items-center gap-3">
+            <span className="text-primary">⚡</span> Projects
+          </h2>
+          <p className="text-slate-500 dark:text-slate-400 max-w-2xl">
+            A collection of projects I've built, ranging from full-stack applications to interactive dashboards.
+          </p>
+        </motion.div>
+
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 gap-8"
+          variants={containerVariants}
+        >
+          {projects.map((project) => (
+            <motion.div key={project.title} variants={itemVariants}>
+              <ProjectCard {...project} />
+            </motion.div>
+          ))}
+        </motion.div>
+      </motion.div>
     </section>
   );
 };
+
+export default Projects;
 
 export const TechStack = () => {
   const techs = [
@@ -184,8 +237,13 @@ export const TechStack = () => {
             transition={{ delay: i * 0.05 }}
             whileHover={{ y: -5, borderColor: "var(--color-primary)" }}
           >
-            <div className={`w-10 h-10 flex items-center justify-center ${tech.color} rounded-lg`}>
-              <img alt={tech.name} className={`w-6 h-6 ${tech.name === 'Next.js' ? 'dark:invert' : ''}`} src={tech.icon} />
+            <div className={`w-10 h-10 flex items-center justify-center ${tech.color} rounded-lg relative`}>
+              <Image 
+                alt={tech.name} 
+                src={tech.icon} 
+                fill
+                className={`object-contain p-1.5 ${tech.name === 'Next.js' ? 'dark:invert' : ''}`} 
+              />
             </div>
             <span className="font-medium">{tech.name}</span>
           </motion.div>
@@ -194,6 +252,8 @@ export const TechStack = () => {
     </section>
   );
 };
+
+// ... rest of your code (Experience, Skills, Education, AboutMe) remains the same
 
 export const Experience = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -460,9 +520,9 @@ export const AboutMe = () => {
           </div>
           <div className="flex gap-4">
             {[
-              { val: "3+", label: "Years Experience" },
-              { val: "30+", label: "Projects Built" },
-              { val: "15+", label: "Happy Clients" }
+              { val: "0", label: "Years Experience" },
+              { val: "10+", label: "Projects Built" },
+              { val: "0", label: "Happy Clients" }
             ].map((stat, i) => (
               <div key={stat.label} className="flex items-center gap-4">
                 <div className="text-center">
