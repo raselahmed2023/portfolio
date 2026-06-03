@@ -18,7 +18,7 @@ interface ProjectProps {
 
 const ProjectCard = ({ title, tags, description, image, liveLink, repoLink }: ProjectProps) => {
   return (
-    <motion.div 
+    <motion.div
       className="project-card group bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden hover:border-primary/50 transition-all shadow-lg hover:shadow-primary/5 text-slate-900 dark:text-slate-100 flex flex-col"
       whileHover={{ y: -10, scale: 1.02 }}
       transition={{ duration: 0.4, ease: [0.21, 0.47, 0.32, 0.98] }}
@@ -29,30 +29,30 @@ const ProjectCard = ({ title, tags, description, image, liveLink, repoLink }: Pr
           whileHover={{ scale: 1.1 }}
           transition={{ duration: 0.8 }}
         >
-          <Image 
-            alt={title} 
+          <Image
+            alt={title}
             src={image}
             fill
-            className="object-cover" 
+            className="object-cover"
           />
         </motion.div>
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-4">
-          <a 
+          <a
             href={liveLink}
             target="_blank"
             rel="noopener noreferrer"
             className="bg-white text-slate-900 px-4 py-2 rounded-full text-sm font-bold hover:bg-primary hover:text-white transition-colors flex items-center gap-2"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /><polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" /></svg>
             Live Demo
           </a>
-          <a 
+          <a
             href={repoLink}
             target="_blank"
             rel="noopener noreferrer"
             className="bg-slate-900 text-white px-4 py-2 rounded-full text-sm font-bold hover:bg-slate-700 transition-colors flex items-center gap-2"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" /></svg>
             Code
           </a>
         </div>
@@ -61,7 +61,7 @@ const ProjectCard = ({ title, tags, description, image, liveLink, repoLink }: Pr
         <h3 className="heading-font font-bold text-xl mb-2">{title}</h3>
         <div className="flex flex-wrap gap-2 mb-4">
           {tags.map((tag) => (
-            <span 
+            <span
               key={tag.name}
               className={`text-[10px] ${tag.color} px-2 py-1 rounded border uppercase tracking-wider font-bold`}
             >
@@ -73,7 +73,7 @@ const ProjectCard = ({ title, tags, description, image, liveLink, repoLink }: Pr
           {description}
         </p>
         <div className="mt-4 pt-4 border-t border-slate-200 dark:border-slate-800 flex gap-3">
-          <a 
+          <a
             href={liveLink}
             target="_blank"
             rel="noopener noreferrer"
@@ -81,7 +81,7 @@ const ProjectCard = ({ title, tags, description, image, liveLink, repoLink }: Pr
           >
             View Live
           </a>
-          <a 
+          <a
             href={repoLink}
             target="_blank"
             rel="noopener noreferrer"
@@ -95,7 +95,7 @@ const ProjectCard = ({ title, tags, description, image, liveLink, repoLink }: Pr
   );
 };
 
- export const Projects = () => {
+export const Projects = () => {
   const projects = [
     {
       title: "Online Book Borrowing Platform",
@@ -191,7 +191,7 @@ const ProjectCard = ({ title, tags, description, image, liveLink, repoLink }: Pr
           </p>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           className="grid grid-cols-1 md:grid-cols-2 gap-8"
           variants={containerVariants}
         >
@@ -216,8 +216,12 @@ export const TechStack = () => {
     { name: "JavaScript", icon: "https://lh3.googleusercontent.com/aida-public/AB6AXuDnnZT1rkLzC5qAtMVbEzbED87NakVmiwFpTfIIslIB8RSK0cg1ME5P-9QZ6-sZBXYPGtT9ah3Umsse5WtHdyymNNuS6PTeg45cPL9ET3vvSsaO2s43eImwmcGVa8lwkn-JK9CTwPYq6CmK-25hiWeHSuHCHy9Uo43IsbhrEEb4i02JrgCRsec8Ydj3SC7qMpq9LXSKh26cJCHnPa_hpsFU42ryhg-RIkPbEAcEPuZInEK9YAUCq4vHIC_XFh2SXheYsHQ2lAyjKaY", color: "bg-yellow-100 dark:bg-yellow-900/20" },
     { name: "TypeScript", icon: "https://lh3.googleusercontent.com/aida-public/AB6AXuCdpT0VloLYH7v6Em9naY5A1J61SMaiHzqPqb1JVMUP6I1gx1Ia5OC5XP8s134vJFZ_8tFeXdZSg1A539yU58snL9H0zQBvsH8sI6vBVcxbxvGlB_tXqXEuF4IV6X-jSn0xMkVd57_ANRC0fDBG-W90lRNcUU_reQa74x_7Iarb6IRP7lb703mlkQi0v7ER4khhxRUEEK-NUdSlyRDvvsXelHzCW20X_7NLzZVabZJhpf058GQ-VYy5IygMn3d41C-9ioCgYLwywI8", color: "bg-blue-100 dark:bg-blue-900/20" },
     { name: "Next.js", icon: "https://lh3.googleusercontent.com/aida-public/AB6AXuDMD7sbpDRuKcxbOvhzWPDJkUi7v6jk1KxsGIaNcNqWOYAy5qep8ZpERFtOXkRww76jzkbuAnyyDt-nEmqohw9Q778vyjWGpvX2Gb-GQywiUGAbara0p3mZQQSNY4nJh2-EerCuHvxVe1SxKGJSe20v8mJEdP3Qx5WuFG7RXwr2ut36Rqt3_hgUQC336vZa2-Hoaady8_liQk7ET-JI8R37r_k0tOxVYE-3NbK41opB7a-oNFTC-c99alUvPE8U2s8dToVr1t3ai-4", color: "bg-slate-100 dark:bg-slate-800" },
-    { name: "Firebase", icon: "https://lh3.googleusercontent.com/aida-public/AB6AXuAiW6_aWM7RHk28pqRgqeDRKWON1IzVxC4gnwywJd0rdxVUl4SVXbz_KAfZiohEdPI9kG2WvJSHBqI42pNa5iKO-vFfaSSw85-hPKO4ZUJqn7zO77O-kb1EvQ8WOhdCplLl70FjCZERJC7R6kZkv_9WsQUGVwkUdoqYtgot8GITDSUh00w5KRDVxTGa_Otbn6P0Ch-PYd47Eb7UJtG83DTISkbOj9eHBRKNHaMjRYmBvxpDOkALSIKRmHJHlqtTE9QALIspCEFLI4E", color: "bg-orange-100 dark:bg-orange-900/20" },
-    { name: "PostgreSQL", icon: "https://lh3.googleusercontent.com/aida-public/AB6AXuBJSbYwBYN5A3PFZ0mwo9IDhWWTNaoB3PrrSnKD3jD4sE7RFBc3ZkfYWp4oS-MhICU0CWq36DS5D3KM5VqPgCdl2Dq1y6VwBov90hW6V98pypHVP4wZUnJ23OlrVTTnIsw-J7Rs374A52kvH5-bnCRKzWJvQtb99aPnDE4LLlhUO5-xv2G0YNloqB9nVBEFc6VoMX0HZOo_UQV1dKIUtB4qhqmTEDJRH4dEGIHqMDqGiXwgvcg3TAaJB6hrVzO_9ozmhh6Gyv--qiU", color: "bg-indigo-100 dark:bg-indigo-900/20" }
+    {
+      name: "JWT", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jsonwebtokens/jsonwebtokens-original.svg", color: "bg-purple-100 dark:bg-purple-900/20"
+    },
+    {
+      name: "MongoDB", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg", color: "bg-emerald-100 dark:bg-emerald-900/20"
+    }
   ];
 
   return (
@@ -228,8 +232,8 @@ export const TechStack = () => {
       </div>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {techs.map((tech, i) => (
-          <motion.div 
-            key={tech.name} 
+          <motion.div
+            key={tech.name}
             className="flex items-center gap-4 p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-slate-900 dark:text-slate-100"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -238,11 +242,11 @@ export const TechStack = () => {
             whileHover={{ y: -5, borderColor: "var(--color-primary)" }}
           >
             <div className={`w-10 h-10 flex items-center justify-center ${tech.color} rounded-lg relative`}>
-              <Image 
-                alt={tech.name} 
-                src={tech.icon} 
+              <Image
+                alt={tech.name}
+                src={tech.icon}
                 fill
-                className={`object-contain p-1.5 ${tech.name === 'Next.js' ? 'dark:invert' : ''}`} 
+                className={`object-contain p-1.5 ${tech.name === 'Next.js' ? 'dark:invert' : ''}`}
               />
             </div>
             <span className="font-medium">{tech.name}</span>
@@ -261,23 +265,12 @@ export const Experience = () => {
 
   const experiences = [
     {
-      company: "Islamic University Accounting Club",
-      period: "Sep 2025 - Present",
-      role: "Finance Secretary",
-      description: "Managing financial records, budgeting, and fund allocation to ensure transparency. Supporting strategic decision-making through financial planning and reporting."
-    },
-    {
       company: "Paridhi",
       period: "Jan 2025 - Present",
       role: "Co-Founder & Assistant Director",
       description: "Promoting a culture of reading and critical thinking through discussions on literature, philosophy, history, and international relations."
     },
-    {
-      company: "Requin BD",
-      period: "April 2025 - Sep 2025",
-      role: "Content Writing Intern",
-      description: "Researched, wrote, and edited engaging content, including short-form fact pieces and video scripts for diverse audiences."
-    },
+
     {
       company: "Islamic University Accounting Club",
       period: "July 2024 - Aug 2025",
@@ -333,11 +326,11 @@ export const Experience = () => {
       </div>
       <div className="space-y-12 relative">
         {/* Progress Line */}
-        <div 
+        <div
           ref={lineRef}
           className="absolute left-5 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-secondary to-transparent -translate-x-1/2 hidden md:block"
         ></div>
-        
+
         {experiences.map((exp, index) => (
           <div key={`${exp.company}-${exp.role}`} className={`experience-item relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group`}>
             <div className="flex items-center justify-center w-10 h-10 rounded-full border border-slate-200 dark:border-slate-800 bg-background-light dark:bg-background-dark text-primary shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
@@ -362,26 +355,31 @@ export const Experience = () => {
 
 export const Skills = () => {
   const categories = [
-      {
-        name: "Frontend",
-        color: "bg-primary",
-        skills: ["HTML", "CSS (Tailwind)", "JavaScript (ES6+)", "React.js (Learning)"]
-      },
-      {
-        name: "Data & Tools",
-        color: "bg-secondary",
-        skills: ["Data Analysis", "Git & GitHub", "VS Code", "Microsoft Office"]
-      },
-      {
-        name: "Management",
-        color: "bg-primary",
-        skills: ["Leadership", "Team Management", "Time Management", "Negotiation"]
-      },
-      {
-        name: "Creative",
-        color: "bg-secondary",
-        skills: ["Content Writing", "Critical Thinking", "Video Editing", "Communication"]
-      }
+    {
+      name: "Frontend",
+      color: "bg-primary",
+      skills: ["HTML5", "CSS3", "JavaScript (ES6+)", "React.js", "Next.js", "Tailwind CSS", "DaisyUI"]
+    },
+    {
+      name: "Backend",
+      color: "bg-secondary",
+      skills: ["Node.js", "Express.js", "MongoDB", "REST API", "JWT Authentication", "Better Auth", "Google OAuth"]
+    },
+    {
+      name: "Tools & Deployment",
+      color: "bg-secondary",
+      skills: ["Git", "GitHub", "VS Code", "Vercel", "Netlify", "Render"]
+    },
+    {
+      name: "AI & Productivity",
+      color: "bg-primary",
+      skills: ["ChatGPT", "Gemini", "GitHub Copilot", "Cursor", "Prompt Engineering", "AI-Assisted Debugging"]
+    },
+    {
+      name: "Management & Creative",
+      color: "bg-primary",
+      skills: ["Leadership", "Teamwork", "Communication", "Critical Thinking", "Time Management", "Negotiation", "Content Writing"]
+    }
   ];
 
   return (
@@ -392,8 +390,8 @@ export const Skills = () => {
       </div>
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {categories.map((cat) => (
-          <motion.div 
-            key={cat.name} 
+          <motion.div
+            key={cat.name}
             className="space-y-4"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -419,7 +417,7 @@ export const Education = () => {
   const education = [
     {
       title: "MBA in Accounting & Information Systems",
-      school: "Islamic University, Kushtia",
+      school: "Islamic University, Kushtia, Bangladesh",
       period: "Feb 2026 - Present",
       gpa: "Ongoing",
       extra: "Research & Data Focus",
@@ -430,7 +428,7 @@ export const Education = () => {
       title: "BBA in Accounting & Information Systems",
       school: "Islamic University, Kushtia",
       period: "Mar 2022 - Feb 2026",
-      gpa: "Final Year Focus",
+      gpa: "3.21",
       extra: "Leadership & IT",
       color: "bg-secondary/5",
       textColor: "text-secondary"
@@ -454,8 +452,8 @@ export const Education = () => {
       </div>
       <div className="grid md:grid-cols-2 gap-8">
         {education.map((edu, i) => (
-          <motion.div 
-            key={`${edu.title}-${edu.school}`} 
+          <motion.div
+            key={`${edu.title}-${edu.school}`}
             className="p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl relative overflow-hidden group text-slate-900 dark:text-slate-100"
             initial={{ opacity: 0, x: i === 0 ? -30 : 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -484,7 +482,7 @@ export const AboutMe = () => {
         <h2 className="heading-font text-3xl font-extrabold uppercase tracking-tight">About Me</h2>
       </div>
       <div className="grid md:grid-cols-2 gap-12 items-center">
-        <motion.div 
+        <motion.div
           className="order-2 md:order-1"
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -534,7 +532,7 @@ export const AboutMe = () => {
             ))}
           </div>
         </motion.div>
-        <motion.div 
+        <motion.div
           className="order-1 md:order-2 flex justify-center"
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -544,22 +542,22 @@ export const AboutMe = () => {
           <div className="relative">
             <div className="absolute -inset-4 bg-gradient-to-tr from-primary to-secondary opacity-20 blur-2xl rounded-full"></div>
             <motion.div
-              animate={{ 
+              animate={{
                 rotate: [3, -3, 3],
               }}
-              transition={{ 
-                duration: 6, 
-                repeat: Infinity, 
-                ease: "easeInOut" 
+              transition={{
+                duration: 6,
+                repeat: Infinity,
+                ease: "easeInOut"
               }}
               whileHover={{ rotate: 0, scale: 1.05 }}
               className="relative w-64 h-64 md:w-80 md:h-80"
             >
-              <Image 
-                alt="Rasel Ahmed" 
+              <Image
+                alt="Rasel Ahmed"
                 src="/profile.jpg"
                 fill
-                className="rounded-3xl object-cover shadow-2xl" 
+                className="rounded-3xl object-cover shadow-2xl"
               />
             </motion.div>
           </div>
