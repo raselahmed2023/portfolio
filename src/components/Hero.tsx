@@ -69,7 +69,7 @@ const Hero = () => {
         I'm <span className="gradient-text">Rasel Ahmed</span>, a Frontend Developer, Data Enthusiast & Research-Oriented Learner.
       </MotionH1>
 
-       <MotionDiv
+      <MotionDiv
         className="flex flex-wrap items-center justify-center gap-4 mono-font text-sm"
         variants={itemVariants}
       >
@@ -82,29 +82,40 @@ const Hero = () => {
           </span>
           Contact me
         </a>
-      <div className="flex gap-4 ml-2">
-        <MotionA
-          className="text-slate-500 hover:text-primary transition-colors flex items-center gap-1"
-          href="https://github.com/raselahmed2023"
+        <a
+          className="bg-primary text-white px-6 py-2 rounded-full flex items-center gap-2 hover:opacity-90 transition-all shadow-sm group"
+          href="https://drive.google.com/uc?export=download&id=1Wz0ls0Cm7kpV-uAKF2aIjzcslyMmOkQ-"
           target="_blank"
           rel="noopener noreferrer"
-          whileHover={{ y: -3 }}
-          whileTap={{ scale: 0.95 }}
         >
-          <i className="fa-brands fa-github text-xl"></i>
-        </MotionA>
-        <MotionA
-          className="text-slate-500 hover:text-primary transition-colors flex items-center gap-1"
-          href="https://www.linkedin.com/in/rasel-ahmed06/"
-          target="_blank"
-          rel="noopener noreferrer"
-          whileHover={{ y: -3 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <i className="fa-brands fa-linkedin text-xl"></i>
-        </MotionA>
-      </div>
-    </MotionDiv>
+          <span className="material-symbols-outlined text-lg group-hover:translate-y-1 transition-transform">
+            download
+          </span>
+          Download Resume
+        </a>
+        <div className="flex gap-4 ml-2">
+          <MotionA
+            className="text-slate-500 hover:text-primary transition-colors flex items-center gap-1"
+            href="https://github.com/raselahmed2023"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ y: -3 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <i className="fa-brands fa-github text-xl"></i>
+          </MotionA>
+          <MotionA
+            className="text-slate-500 hover:text-primary transition-colors flex items-center gap-1"
+            href="https://www.linkedin.com/in/rasel-ahmed06/"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ y: -3 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <i className="fa-brands fa-linkedin text-xl"></i>
+          </MotionA>
+        </div>
+      </MotionDiv>
     </MotionSection >
   );
 };

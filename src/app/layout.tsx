@@ -18,7 +18,7 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Rasel Ahmed | Full Stack Developer",
+  title: "Rasel Ahmed | Web Developer",
   description: "Portfolio of Rasel Ahmed, a Full Stack Developer building modern web applications with a focus on aesthetics and functionality.",
 };
 
