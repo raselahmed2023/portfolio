@@ -113,6 +113,19 @@ const ProjectCard = ({ title, tags, description, image, liveLink, repoLink }: Pr
 export const Projects = () => {
   const projects = [
     {
+      title: "SportNest",
+      tags: [
+        { name: "Next.js", color: "bg-black text-white border-black" },
+        { name: "MongoDB", color: "bg-green-100 text-green-700 border-green-300" },
+        { name: "Express.js", color: "bg-gray-100 text-gray-700 border-gray-300" },
+        { name: "Better Auth", color: "bg-orange-100 text-orange-700 border-orange-300" },
+      ],
+      description: "A full-stack sports facility booking platform where users can browse and book sports facilities while owners manage listings through role-based dashboards. Features authentication, booking management, CRUD operations, and responsive design.",
+      image: "/projects/sportnest.jpg",
+      liveLink: "https://sports-nest-gules.vercel.app/",
+      repoLink: "https://github.com/raselahmed2023/sports-nest"
+    },
+    {
       title: "Online Book Borrowing Platform",
       tags: [
         { name: "Next.js", color: "bg-black text-white border-black" },
@@ -152,6 +165,18 @@ export const Projects = () => {
       repoLink: "https://github.com/raselahmed2023/ken-keeper"
     },
     {
+      title: "Job Application Tracker",
+      tags: [
+        { name: "JavaScript", color: "bg-yellow-100 text-yellow-700 border-yellow-300" },
+        { name: "HTML5", color: "bg-orange-100 text-orange-700 border-orange-300" },
+        { name: "CSS3", color: "bg-blue-100 text-blue-700 border-blue-300" },
+      ],
+      description: "Interactive job application tracker with dashboard analytics, interview and rejection management, dynamic tab filtering, real-time status updates, delete functionality, and fully responsive design.",
+      image: "/projects/job-tracker.jpg",
+      liveLink: "https://statuesque-salmiakki-676652.netlify.app/",
+      repoLink: "https://github.com/raselahmed2023/job-tracker"
+    },
+    {
       title: "GitHub Issue Tracker",
       tags: [
         { name: "React", color: "bg-blue-100 text-blue-700 border-blue-300" },
@@ -160,7 +185,7 @@ export const Projects = () => {
       ],
       description: "A streamlined GitHub issue tracking interface that helps developers manage and organize repository issues efficiently. Clean UI with real-time GitHub API integration.",
       image: "/projects/github-issue.jpg",
-      liveLink: "https://raselahmed2023.github.io/github-issue/",
+      liveLink: "https://resilient-panda-f132a7.netlify.app/",
       repoLink: "https://github.com/raselahmed2023/github-issue"
     }
   ];
