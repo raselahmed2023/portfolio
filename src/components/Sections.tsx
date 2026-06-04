@@ -5,6 +5,21 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { SiExpress } from "react-icons/si";
+import { FaHtml5 } from "react-icons/fa";
+import {
+  FaReact,
+  FaNodeJs,
+  FaJs,
+} from "react-icons/fa";
+
+import {
+  SiNextdotjs,
+  SiTypescript,
+  SiTailwindcss,
+  SiMongodb,
+  SiJsonwebtokens,
+} from "react-icons/si";
 
 
 interface ProjectProps {
@@ -210,18 +225,56 @@ export default Projects;
 
 export const TechStack = () => {
   const techs = [
-    { name: "React", icon: "https://lh3.googleusercontent.com/aida-public/AB6AXuApo0-GKQUHxXE8AljESUl9nTuzUiV3lw42ZQtVLvijNO1qFKT9TuRtkvh6E7lm5NbZQryd_xtuvp3Ii4hHXPtblfsGAwDKXmcetnmGSEflMpLvbcrfYFkbHCgRZRAoD7WROWCizZRumvuG_1y3s5KoGYUg1-FVfsBHglgvXKnc5VgKf1SIXqHD1IJLS46f1jlpk9IfsDZCdyhY6lTEuAQv7Hy256kYO0ZdooRjUIbDoaYgzh6HSQeli3N5TjEdSOrpED66uplfcHg", color: "bg-blue-100 dark:bg-blue-900/20" },
-    { name: "Node.js", icon: "https://lh3.googleusercontent.com/aida-public/AB6AXuCvM9uU9aWMRCwjRAJK8okg-rJUtJwq3Z5lDRSb2uV51DuMaKLK5TYNACW5bw4Oa8XjwuU7tZGhgEsR_lHKUEobPQutnGgBZXLRatJS1Y-ckS1tcrvoKsbvbImBGJzVVTiT6Th6p6-omeu6-omWIYYE10JGOsAwLhnK3zQSTBy7h80n8YMrRPlUAPPXDRwXi65nykbQFCM_ECTB1IwEEAuM96fMnkCQzesipdnb5W5wSUlWhiWFrBPNfCgBaA5XsIgtXdRd6S21BDA", color: "bg-green-100 dark:bg-green-900/20" },
-    { name: "Tailwind CSS", icon: "https://lh3.googleusercontent.com/aida-public/AB6AXuATtbUkmSmF_I04OnaQuHVeMMET7UBIBCzFuEJOe4-dzunmJcGbatoaErNNWmV2T7B7GRAlt2D2wdJyWgXHQ0mU12kNphIOxNytRrofHOaoe29uXQSt8W9XVvn1qX1ajcyuRgEoAlAmLyvQbECeLylkh_FQsOy7SrdDMDWN0NVQHXOBVIsHwl9rRGz1ziScPAlCq3lNKULDnuGKDrodPYLHPtxgeu-7wRZ2ychvyvgKJaH72dM8oZ4E32pgiXRwJ9aavzvMi3w32Uo", color: "bg-sky-100 dark:bg-sky-900/20" },
-    { name: "JavaScript", icon: "https://lh3.googleusercontent.com/aida-public/AB6AXuDnnZT1rkLzC5qAtMVbEzbED87NakVmiwFpTfIIslIB8RSK0cg1ME5P-9QZ6-sZBXYPGtT9ah3Umsse5WtHdyymNNuS6PTeg45cPL9ET3vvSsaO2s43eImwmcGVa8lwkn-JK9CTwPYq6CmK-25hiWeHSuHCHy9Uo43IsbhrEEb4i02JrgCRsec8Ydj3SC7qMpq9LXSKh26cJCHnPa_hpsFU42ryhg-RIkPbEAcEPuZInEK9YAUCq4vHIC_XFh2SXheYsHQ2lAyjKaY", color: "bg-yellow-100 dark:bg-yellow-900/20" },
-    { name: "TypeScript", icon: "https://lh3.googleusercontent.com/aida-public/AB6AXuCdpT0VloLYH7v6Em9naY5A1J61SMaiHzqPqb1JVMUP6I1gx1Ia5OC5XP8s134vJFZ_8tFeXdZSg1A539yU58snL9H0zQBvsH8sI6vBVcxbxvGlB_tXqXEuF4IV6X-jSn0xMkVd57_ANRC0fDBG-W90lRNcUU_reQa74x_7Iarb6IRP7lb703mlkQi0v7ER4khhxRUEEK-NUdSlyRDvvsXelHzCW20X_7NLzZVabZJhpf058GQ-VYy5IygMn3d41C-9ioCgYLwywI8", color: "bg-blue-100 dark:bg-blue-900/20" },
-    { name: "Next.js", icon: "https://lh3.googleusercontent.com/aida-public/AB6AXuDMD7sbpDRuKcxbOvhzWPDJkUi7v6jk1KxsGIaNcNqWOYAy5qep8ZpERFtOXkRww76jzkbuAnyyDt-nEmqohw9Q778vyjWGpvX2Gb-GQywiUGAbara0p3mZQQSNY4nJh2-EerCuHvxVe1SxKGJSe20v8mJEdP3Qx5WuFG7RXwr2ut36Rqt3_hgUQC336vZa2-Hoaady8_liQk7ET-JI8R37r_k0tOxVYE-3NbK41opB7a-oNFTC-c99alUvPE8U2s8dToVr1t3ai-4", color: "bg-slate-100 dark:bg-slate-800" },
     {
-      name: "JWT", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jsonwebtokens/jsonwebtokens-original.svg", color: "bg-purple-100 dark:bg-purple-900/20"
+      name: "React",
+      icon: FaReact,
+      color: "text-cyan-500",
     },
     {
-      name: "MongoDB", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg", color: "bg-emerald-100 dark:bg-emerald-900/20"
-    }
+      name: "Node.js",
+      icon: FaNodeJs,
+      color: "text-green-500",
+    },
+    {
+      name: "Tailwind CSS",
+      icon: SiTailwindcss,
+      color: "text-sky-500",
+    },
+    {
+      name: "HTML5",
+      icon: FaHtml5,
+      color: "text-orange-500",
+    },
+    {
+      name: "JavaScript",
+      icon: FaJs,
+      color: "text-yellow-500",
+    },
+    {
+      name: "TypeScript",
+      icon: SiTypescript,
+      color: "text-blue-500",
+    },
+    {
+      name: "Next.js",
+      icon: SiNextdotjs,
+      color: "text-black dark:text-white",
+    },
+    {
+      name: "JWT",
+      icon: SiJsonwebtokens,
+      color: "text-purple-500",
+    },
+    {
+      name: "Express.js",
+      icon: SiExpress,
+      color: "text-gray-500",
+    },
+    {
+      name: "MongoDB",
+      icon: SiMongodb,
+      color: "text-green-600",
+    },
   ];
 
   return (
@@ -231,27 +284,26 @@ export const TechStack = () => {
         <h2 className="heading-font text-3xl font-extrabold uppercase tracking-tight">Tech Stack</h2>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {techs.map((tech, i) => (
-          <motion.div
-            key={tech.name}
-            className="flex items-center gap-4 p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-slate-900 dark:text-slate-100"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.05 }}
-            whileHover={{ y: -5, borderColor: "var(--color-primary)" }}
-          >
-            <div className={`w-10 h-10 flex items-center justify-center ${tech.color} rounded-lg relative`}>
-              <Image
-                alt={tech.name}
-                src={tech.icon}
-                fill
-                className={`object-contain p-1.5 ${tech.name === 'Next.js' ? 'dark:invert' : ''}`}
-              />
-            </div>
-            <span className="font-medium">{tech.name}</span>
-          </motion.div>
-        ))}
+        {techs.map((tech, i) => {
+          const Icon = tech.icon;
+
+          return (
+            <motion.div
+              key={tech.name}
+              className="flex items-center gap-4 p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.05 }}
+            >
+              <div className="w-10 h-10 flex items-center justify-center">
+                <Icon className={`text-3xl ${tech.color}`} />
+              </div>
+
+              <span className="font-medium">{tech.name}</span>
+            </motion.div>
+          );
+        })}
       </div>
     </section>
   );
@@ -490,10 +542,11 @@ export const AboutMe = () => {
           transition={{ duration: 0.8 }}
         >
           <p className="mb-6 leading-relaxed">
-            I'm <span className="text-primary font-semibold">Rasel Ahmed</span>, a final-year BBA student at Islamic University, Kushtia, majoring in <span className="text-secondary">Accounting and Information Systems</span>. With leadership, research, and IT experience, I bring combined strengths in business, digital skills, and organizational management.
+            I'm <span className="text-primary font-semibold">Rasel Ahmed</span>, a Junior Frontend Developer and MBA student at Islamic University, Kushtia, majoring in <span className="text-secondary">Accounting & Information Systems</span>. I specialize in building modern, responsive, and user-friendly web applications using React.js, Next.js, JavaScript, Tailwind CSS, Node.js, and MongoDB.
           </p>
+
           <p className="mb-6 leading-relaxed text-slate-500 dark:text-slate-400">
-            Passionate about reading, programming, and personal growth, I aim to grow as a versatile professional, ready to embrace new challenges and contribute meaningfully in academic, organizational, and professional domains.
+            Through hands-on projects and continuous learning, I have developed experience in authentication, API integration, CRUD operations, responsive design, and full-stack web development. Passionate about technology, problem-solving, and personal growth, I aim to create impactful digital solutions while continuously improving my technical and professional skills.
           </p>
           <div className="mb-8">
             <h4 className="mono-font text-sm font-bold uppercase tracking-widest text-primary mb-4">Current Goals</h4>

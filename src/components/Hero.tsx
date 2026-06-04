@@ -7,6 +7,7 @@ const MotionSection = motion.section;
 const MotionDiv = motion.div;
 const MotionH1 = motion.h1;
 const MotionA = motion.a;
+const MotionP = motion.p;
 
 const Hero = () => {
   const containerVariants: Variants = {
@@ -63,11 +64,21 @@ const Hero = () => {
       </MotionDiv>
 
       <MotionH1
-        className="text-4xl md:text-6xl font-extrabold mb-6 max-w-4xl mx-auto leading-tight heading-font"
+        className="text-4xl md:text-6xl font-extrabold mb-4 max-w-4xl mx-auto leading-tight heading-font"
         variants={itemVariants}
       >
-        I'm <span className="gradient-text">Rasel Ahmed</span>, a Frontend Developer, Data Enthusiast & Research-Oriented Learner.
+        I'm <span className="gradient-text">Rasel Ahmed</span>,
+        <br />
+        a Junior Frontend Developer
       </MotionH1>
+
+      <MotionP
+        className="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto mb-8"
+        variants={itemVariants}
+      >
+        Building modern, responsive, and user-friendly web applications
+        with React.js, Next.js, and MERN Stack technologies.
+      </MotionP>
 
       <MotionDiv
         className="flex flex-wrap items-center justify-center gap-4 mono-font text-sm"
