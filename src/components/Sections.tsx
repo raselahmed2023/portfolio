@@ -34,8 +34,8 @@ interface ProjectProps {
 const ProjectCard = ({ title, tags, description, image, liveLink, repoLink }: ProjectProps) => {
   return (
     <motion.div
-      className="project-card group bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden hover:border-primary/50 transition-all shadow-lg hover:shadow-primary/5 text-slate-900 dark:text-slate-100 flex flex-col"
-      whileHover={{ y: -10, scale: 1.02 }}
+      className="project-card group bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-lg overflow-hidden hover:border-primary/50 transition-all shadow-sm hover:shadow-primary/10 text-slate-900 dark:text-slate-100 flex flex-col h-full"
+      whileHover={{ y: -4, scale: 1.005 }}
       transition={{ duration: 0.4, ease: [0.21, 0.47, 0.32, 0.98] }}
     >
       <div className="aspect-video relative overflow-hidden bg-slate-100 dark:bg-slate-800">
@@ -51,56 +51,71 @@ const ProjectCard = ({ title, tags, description, image, liveLink, repoLink }: Pr
             className="object-cover"
           />
         </motion.div>
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-4">
+
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-3">
           <a
             href={liveLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-white text-slate-900 px-4 py-2 rounded-full text-sm font-bold hover:bg-primary hover:text-white transition-colors flex items-center gap-2"
+            className="bg-white text-slate-900 px-2.5 py-1 rounded-full text-[11px] font-bold hover:bg-primary hover:text-white transition-colors flex items-center gap-1"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /><polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" /></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+              <polyline points="15 3 21 3 21 9" />
+              <line x1="10" y1="14" x2="21" y2="3" />
+            </svg>
             Live Demo
           </a>
+
           <a
             href={repoLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-slate-900 text-white px-4 py-2 rounded-full text-sm font-bold hover:bg-slate-700 transition-colors flex items-center gap-2"
+            className="bg-slate-900 text-white px-2.5 py-1 rounded-full text-[11px] font-bold hover:bg-slate-700 transition-colors flex items-center gap-1"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" /></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+            </svg>
             Code
           </a>
         </div>
       </div>
-      <div className="p-6 flex-1 flex flex-col">
-        <h3 className="heading-font font-bold text-xl mb-2">{title}</h3>
-        <div className="flex flex-wrap gap-2 mb-4">
+
+      <div className="p-3 flex-1 flex flex-col">
+        <h3 className="heading-font font-bold text-base mb-1.5 leading-tight">
+          {title}
+        </h3>
+
+        <div className="flex flex-wrap gap-1.5 mb-2.5">
           {tags.map((tag) => (
             <span
               key={tag.name}
-              className={`text-[10px] ${tag.color} px-2 py-1 rounded border uppercase tracking-wider font-bold`}
+              className={`text-[8px] ${tag.color} px-1.5 py-0.5 rounded border uppercase tracking-wider font-bold`}
             >
               {tag.name}
             </span>
           ))}
         </div>
-        <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed flex-1">
+
+        <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed flex-1 line-clamp-2">
           {description}
         </p>
-        <div className="mt-4 pt-4 border-t border-slate-200 dark:border-slate-800 flex gap-3">
+
+        <div className="mt-3 pt-3 border-t border-slate-200 dark:border-slate-800 flex gap-2">
           <a
             href={liveLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 text-center py-2 rounded-lg border border-slate-200 dark:border-slate-700 text-sm font-semibold hover:border-primary hover:text-primary transition-all"
+            className="flex-1 text-center py-1.5 rounded-md border border-slate-200 dark:border-slate-700 text-[11px] font-semibold hover:border-primary hover:text-primary transition-all"
           >
             View Live
           </a>
+
           <a
             href={repoLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 text-center py-2 rounded-lg bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 text-sm font-semibold hover:opacity-90 transition-all"
+            className="flex-1 text-center py-1.5 rounded-md bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 text-[11px] font-semibold hover:opacity-90 transition-all"
           >
             View Code
           </a>
@@ -113,6 +128,20 @@ const ProjectCard = ({ title, tags, description, image, liveLink, repoLink }: Pr
 export const Projects = () => {
   const projects = [
     {
+      title: "ReSell Hub",
+      tags: [
+        { name: "Next.js", color: "bg-black text-white border-black" },
+        { name: "MongoDB", color: "bg-green-100 text-green-700 border-green-300" },
+        { name: "Stripe", color: "bg-indigo-100 text-indigo-700 border-indigo-300" },
+        { name: "Better Auth", color: "bg-orange-100 text-orange-700 border-orange-300" },
+      ],
+      description:
+        "Full-stack second-hand marketplace with Better Auth, Buyer/Seller/Admin dashboards, wishlist, product approval, order tracking, Stripe checkout, analytics, and responsive marketplace pages.",
+      image: "/projects/resell-hub.jpg",
+      liveLink: "https://resell-hub-rho.vercel.app/",
+      repoLink: "https://github.com/raselahmed2023/resellHub",
+    },
+    {
       title: "SportNest",
       tags: [
         { name: "Next.js", color: "bg-black text-white border-black" },
@@ -120,10 +149,11 @@ export const Projects = () => {
         { name: "Express.js", color: "bg-gray-100 text-gray-700 border-gray-300" },
         { name: "Better Auth", color: "bg-orange-100 text-orange-700 border-orange-300" },
       ],
-      description: "A full-stack sports facility booking platform where users can browse and book sports facilities while owners manage listings through role-based dashboards. Features authentication, booking management, CRUD operations, and responsive design.",
+      description:
+        "A full-stack sports facility booking platform where users can browse and book sports facilities while owners manage listings through role-based dashboards. Features authentication, booking management, CRUD operations, and responsive design.",
       image: "/projects/sportnest.jpg",
       liveLink: "https://sports-nest-gules.vercel.app/",
-      repoLink: "https://github.com/raselahmed2023/sports-nest"
+      repoLink: "https://github.com/raselahmed2023/sports-nest",
     },
     {
       title: "Online Book Borrowing Platform",
@@ -133,10 +163,11 @@ export const Projects = () => {
         { name: "Tailwind", color: "bg-cyan-100 text-cyan-700 border-cyan-300" },
         { name: "Better Auth", color: "bg-orange-100 text-orange-700 border-orange-300" },
       ],
-      description: "A modern web app to discover, explore, and borrow books. Features Google OAuth, email authentication, book categories (Story, Tech, Science), and a personal dashboard to track borrowed books. Fully responsive design.",
+      description:
+        "A modern web app to discover, explore, and borrow books. Features Google OAuth, email authentication, book categories, and a personal dashboard to track borrowed books.",
       image: "/projects/book-platform.jpg",
       liveLink: "https://online-book-borrowing-platform-mocha.vercel.app/",
-      repoLink: "https://github.com/raselahmed2023/Online_Book_Borrowing_Platform"
+      repoLink: "https://github.com/raselahmed2023/Online_Book_Borrowing_Platform",
     },
     {
       title: "DigiTools",
@@ -146,10 +177,11 @@ export const Projects = () => {
         { name: "DaisyUI", color: "bg-purple-100 text-purple-700 border-purple-300" },
         { name: "JavaScript", color: "bg-yellow-100 text-yellow-700 border-yellow-300" },
       ],
-      description: "Digital productivity tools marketplace with 200+ premium tools and 50k+ active users. Features easy purchasing with three payment methods, product cart management, and trial periods. Built with React-Toastify for notifications.",
+      description:
+        "Digital productivity tools marketplace with 200+ premium tools and 50k+ active users. Features purchasing, product cart management, and trial periods.",
       image: "/projects/digitools.jpg",
       liveLink: "https://digitools-react.netlify.app/",
-      repoLink: "https://github.com/raselahmed2023/digiTools"
+      repoLink: "https://github.com/raselahmed2023/digiTools",
     },
     {
       title: "KeenKeeper",
@@ -159,10 +191,11 @@ export const Projects = () => {
         { name: "Recharts", color: "bg-pink-100 text-pink-700 border-pink-300" },
         { name: "React", color: "bg-blue-100 text-blue-700 border-blue-300" },
       ],
-      description: "Friendship management dashboard with smart friend tracking, quick check-in systems, and an interactive timeline. Fully responsive with data visualization using Recharts and toast notifications.",
+      description:
+        "Friendship management dashboard with smart friend tracking, quick check-in systems, interactive timeline, Recharts data visualization, and toast notifications.",
       image: "/projects/keenkeeper.jpg",
       liveLink: "https://kin-keeper-seven-self.vercel.app/",
-      repoLink: "https://github.com/raselahmed2023/ken-keeper"
+      repoLink: "https://github.com/raselahmed2023/ken-keeper",
     },
     {
       title: "Job Application Tracker",
@@ -171,10 +204,25 @@ export const Projects = () => {
         { name: "HTML5", color: "bg-orange-100 text-orange-700 border-orange-300" },
         { name: "CSS3", color: "bg-blue-100 text-blue-700 border-blue-300" },
       ],
-      description: "Interactive job application tracker with dashboard analytics, interview and rejection management, dynamic tab filtering, real-time status updates, delete functionality, and fully responsive design.",
+      description:
+        "Interactive job application tracker with dashboard analytics, interview and rejection management, dynamic tab filtering, real-time status updates, and responsive design.",
       image: "/projects/job-tracker.jpg",
       liveLink: "https://statuesque-salmiakki-676652.netlify.app/",
-      repoLink: "https://github.com/raselahmed2023/job-tracker"
+      repoLink: "https://github.com/raselahmed2023/job-tracker",
+    },
+    {
+      title: "CineTrack",
+      tags: [
+        { name: "React", color: "bg-blue-100 text-blue-700 border-blue-300" },
+        { name: "Vite", color: "bg-purple-100 text-purple-700 border-purple-300" },
+        { name: "Tailwind", color: "bg-cyan-100 text-cyan-700 border-cyan-300" },
+        { name: "LocalStorage", color: "bg-emerald-100 text-emerald-700 border-emerald-300" },
+      ],
+      description:
+        "Responsive movie watchlist built with React and Vite. Users can add movies, search/filter by watched status, toggle, delete, reset, and persist data with LocalStorage.",
+      image: "/projects/cinetrack.jpg",
+      liveLink: "https://cine-track-nine.vercel.app/",
+      repoLink: "https://github.com/raselahmed2023/cineTrack",
     },
     {
       title: "GitHub Issue Tracker",
@@ -183,11 +231,12 @@ export const Projects = () => {
         { name: "GitHub API", color: "bg-gray-100 text-gray-700 border-gray-300" },
         { name: "JavaScript", color: "bg-yellow-100 text-yellow-700 border-yellow-300" },
       ],
-      description: "A streamlined GitHub issue tracking interface that helps developers manage and organize repository issues efficiently. Clean UI with real-time GitHub API integration.",
+      description:
+        "A streamlined GitHub issue tracking interface that helps developers manage and organize repository issues efficiently. Clean UI with real-time GitHub API integration.",
       image: "/projects/github-issue.jpg",
       liveLink: "https://resilient-panda-f132a7.netlify.app/",
-      repoLink: "https://github.com/raselahmed2023/github-issue"
-    }
+      repoLink: "https://github.com/raselahmed2023/github-issue",
+    },
   ];
 
   const containerVariants = {
@@ -208,13 +257,18 @@ export const Projects = () => {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: [0.21, 0.47, 0.32, 0.98] as [number, number, number, number],
+        ease: [0.21, 0.47, 0.32, 0.98] as [
+          number,
+          number,
+          number,
+          number
+        ],
       },
     },
   };
 
   return (
-    <section id="projects" className="py-20">
+    <section id="projects" className="py-12">
       <motion.div
         className="max-w-6xl mx-auto px-4"
         initial="hidden"
@@ -222,17 +276,19 @@ export const Projects = () => {
         viewport={{ once: true, margin: "-100px" }}
         variants={containerVariants}
       >
-        <motion.div variants={itemVariants} className="mb-12">
+        <motion.div variants={itemVariants} className="mb-7">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 heading-font flex items-center gap-3">
             <span className="text-primary">⚡</span> Projects
           </h2>
+
           <p className="text-slate-500 dark:text-slate-400 max-w-2xl">
-            A collection of projects I've built, ranging from full-stack applications to interactive dashboards.
+            A collection of projects I&apos;ve built, ranging from full-stack
+            applications to interactive dashboards.
           </p>
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
           variants={containerVariants}
         >
           {projects.map((project) => (
