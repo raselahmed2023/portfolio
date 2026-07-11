@@ -69,7 +69,7 @@ const Hero = () => {
       >
         I'm <span className="gradient-text">Rasel Ahmed</span>,
         <br />
-        a Junior Frontend Developer
+       a Frontend Developer
       </MotionH1>
 
       <MotionP
@@ -77,7 +77,7 @@ const Hero = () => {
         variants={itemVariants}
       >
         Building modern, responsive, and user-friendly web applications
-        with React.js, Next.js, and MERN Stack technologies.
+        with React, Next.js, TypeScript and MERN Stack technologies.
       </MotionP>
 
       <MotionDiv
