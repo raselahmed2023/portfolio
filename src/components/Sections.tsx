@@ -623,7 +623,7 @@ export const AboutMe = () => {
           transition={{ duration: 0.8 }}
         >
           <p className="mb-6 leading-relaxed">
-            I'm <span className="text-primary font-semibold">Rasel Ahmed</span>, a Junior Frontend Developer and MBA student at Islamic University, Kushtia, majoring in <span className="text-secondary">Accounting & Information Systems</span>. I specialize in building modern, responsive, and user-friendly web applications using React.js, Next.js, JavaScript, Tailwind CSS, Node.js, and MongoDB.
+            I'm <span className="text-primary font-semibold">Rasel Ahmed</span>, a Frontend Developer and MBA student at Islamic University, Kushtia, majoring in <span className="text-secondary">Accounting & Information Systems</span>. I specialize in building modern, responsive, and user-friendly web applications using React.js, Next.js, JavaScript, Tailwind CSS, Node.js, and MongoDB.
           </p>
 
           <p className="mb-6 leading-relaxed text-slate-500 dark:text-slate-400">

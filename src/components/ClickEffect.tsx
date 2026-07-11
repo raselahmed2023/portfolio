@@ -1,70 +1,112 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 
-interface Particle {
+interface Bubble {
   id: number;
   x: number;
   y: number;
   color: string;
   angle: number;
+  distance: number;
+  size: number;
 }
 
+const colors = [
+  '#10b981',
+  '#0ea5e9',
+  '#6366f1',
+  '#f43f5e',
+  '#f59e0b',
+];
+
 const ClickEffect = () => {
-  const [particles, setParticles] = useState<Particle[]>([]);
-  const colors = ['#10b981', '#0ea5e9', '#6366f1', '#f43f5e', '#f59e0b'];
+  const [bubbles, setBubbles] = useState<Bubble[]>([]);
 
   useEffect(() => {
-    const handleClick = (e: MouseEvent) => {
-      const newParticles = Array.from({ length: 8 }).map((_, i) => ({
-        id: Date.now() + i,
-        x: e.clientX,
-        y: e.clientY,
+    const handleClick = (event: MouseEvent) => {
+      const clickId = Date.now();
+
+      const newBubbles: Bubble[] = Array.from({ length: 10 }, (_, index) => ({
+        id: clickId + index,
+        x: event.clientX,
+        y: event.clientY,
         color: colors[Math.floor(Math.random() * colors.length)],
-        angle: (i * 360) / 8,
+        angle: (index * 360) / 10 + Math.random() * 20,
+        distance: 35 + Math.random() * 45,
+        size: 6 + Math.random() * 8,
       }));
 
-      setParticles((prev) => [...prev, ...newParticles]);
+      setBubbles((previousBubbles) => [
+        ...previousBubbles,
+        ...newBubbles,
+      ]);
 
-      // Cleanup particles after animation
       setTimeout(() => {
-        setParticles((prev) => prev.filter((p) => !newParticles.find((np) => np.id === p.id)));
-      }, 1000);
+        const newBubbleIds = new Set(
+          newBubbles.map((bubble) => bubble.id)
+        );
+
+        setBubbles((previousBubbles) =>
+          previousBubbles.filter(
+            (bubble) => !newBubbleIds.has(bubble.id)
+          )
+        );
+      }, 800);
     };
 
     window.addEventListener('click', handleClick);
-    return () => window.removeEventListener('click', handleClick);
+
+    return () => {
+      window.removeEventListener('click', handleClick);
+    };
   }, []);
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-[10000] overflow-hidden">
+    <div className="fixed inset-0 z-[10000] pointer-events-none overflow-hidden">
       <AnimatePresence>
-        {particles.map((p) => (
-          <motion.div
-            key={p.id}
-            initial={{ 
-              x: p.x - 4, 
-              y: p.y - 4, 
-              opacity: 1, 
-              scale: 0 
-            }}
-            animate={{ 
-              x: p.x + Math.cos((p.angle * Math.PI) / 180) * 100 - 4,
-              y: p.y + Math.sin((p.angle * Math.PI) / 180) * 100 - 4,
-              opacity: 0,
-              scale: [0, 1.5, 0.5],
-              rotate: p.angle + 90
-            }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-            className="absolute w-2 h-6 rounded-full blur-[1px]"
-            style={{ 
-              backgroundColor: p.color,
-              boxShadow: `0 0 15px ${p.color}`
-            }}
-          />
-        ))}
+        {bubbles.map((bubble) => {
+          const radians = (bubble.angle * Math.PI) / 180;
+
+          const destinationX =
+            bubble.x + Math.cos(radians) * bubble.distance;
+
+          const destinationY =
+            bubble.y + Math.sin(radians) * bubble.distance;
+
+          return (
+            <motion.div
+              key={bubble.id}
+              className="absolute rounded-full"
+              initial={{
+                x: bubble.x - bubble.size / 2,
+                y: bubble.y - bubble.size / 2,
+                opacity: 1,
+                scale: 0,
+              }}
+              animate={{
+                x: destinationX - bubble.size / 2,
+                y: destinationY - bubble.size / 2,
+                opacity: 0,
+                scale: [0, 1.3, 0.8],
+              }}
+              exit={{
+                opacity: 0,
+              }}
+              transition={{
+                duration: 0.7,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              style={{
+                width: bubble.size,
+                height: bubble.size,
+                backgroundColor: bubble.color,
+                boxShadow: `0 0 10px ${bubble.color}`,
+              }}
+            />
+          );
+        })}
       </AnimatePresence>
     </div>
   );
