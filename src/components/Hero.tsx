@@ -1,133 +1,192 @@
-'use client';
+"use client";
 
-import { motion, Variants } from 'framer-motion';
-import Image from 'next/image';
+import Image from "next/image";
+import { motion } from "framer-motion";
 
-const MotionSection = motion.section;
-const MotionDiv = motion.div;
-const MotionH1 = motion.h1;
-const MotionA = motion.a;
-const MotionP = motion.p;
+const RESUME_URL =
+  "https://drive.google.com/uc?export=download&id=1Wz0ls0Cm7kpV-uAKF2aIjzcslyMmOkQ-";
 
 const Hero = () => {
-  const containerVariants: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.3,
-      },
-    },
-  };
-
-  const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        ease: [0.21, 0.47, 0.32, 0.98] as [number, number, number, number],
-      },
-    },
-  };
-
   return (
-    <MotionSection
-      className="text-center mb-20"
+    <section
       id="home"
-      initial="hidden"
-      animate="visible"
-      variants={containerVariants}
+      className="scroll-mt-24 pb-16 pt-4"
     >
-      <MotionDiv
-        className="relative inline-block mb-8"
-        variants={{
-          hidden: { scale: 0.8, opacity: 0 },
-          visible: {
-            scale: 1,
+      <div className="grid min-h-[70vh] items-center gap-10 lg:grid-cols-[1.15fr_0.85fr]">
+        {/* Hero Content */}
+        <motion.div
+          initial={{
+            opacity: 0,
+            x: -30,
+          }}
+          animate={{
             opacity: 1,
-            transition: { duration: 1, ease: 'easeOut' },
-          },
-        }}
-      >
-        <div className="absolute inset-0 bg-primary blur-3xl opacity-20 rounded-full"></div>
-        <Image
-          alt="Rasel Ahmed"
-          width={160}
-          height={160}
-          priority
-          className="relative w-40 h-40 rounded-full border-4 border-slate-200 dark:border-slate-800 object-cover shadow-2xl"
-          src="/profile.jpg"
-        />
-      </MotionDiv>
-
-      <MotionH1
-        className="text-4xl md:text-6xl font-extrabold mb-4 max-w-4xl mx-auto leading-tight heading-font"
-        variants={itemVariants}
-      >
-        I'm <span className="gradient-text">Rasel Ahmed</span>,
-        <br />
-       a Frontend Developer
-      </MotionH1>
-
-      <MotionP
-        className="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto mb-8"
-        variants={itemVariants}
-      >
-        Building modern, responsive, and user-friendly web applications
-        with React, Next.js, TypeScript and MERN Stack technologies.
-      </MotionP>
-
-      <MotionDiv
-        className="flex flex-wrap items-center justify-center gap-4 mono-font text-sm"
-        variants={itemVariants}
-      >
-        <a
-          className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-6 py-2 rounded-full flex items-center gap-2 hover:border-primary transition-all shadow-sm group text-slate-900 dark:text-slate-100"
-          href="mailto:raselahmediu22@gmail.com"
+            x: 0,
+          }}
+          transition={{
+            duration: 0.7,
+          }}
+          className="order-2 lg:order-1"
         >
-          <span className="material-symbols-outlined text-lg group-hover:rotate-12 transition-transform text-slate-600 dark:text-slate-400">
-            mail
-          </span>
-          Contact me
-        </a>
-        <a
-          className="bg-primary text-white px-6 py-2 rounded-full flex items-center gap-2 hover:opacity-90 transition-all shadow-sm group"
-          href="https://drive.google.com/uc?export=download&id=1Wz0ls0Cm7kpV-uAKF2aIjzcslyMmOkQ-"
-          target="_blank"
-          rel="noopener noreferrer"
+          <p className="mono-font mb-4 text-sm font-bold uppercase tracking-[0.25em] text-primary">
+            Hello, I&apos;m
+          </p>
+
+          <h1 className="heading-font text-4xl font-extrabold leading-tight text-slate-900 dark:text-white sm:text-5xl lg:text-6xl">
+            Rasel Ahmed
+          </h1>
+
+          <h2 className="heading-font mt-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-2xl font-bold text-transparent sm:text-3xl">
+            MERN Stack & Full-Stack Enthusiast
+          </h2>
+
+          <p className="mt-5 max-w-xl text-sm leading-7 text-slate-600 dark:text-slate-300 sm:text-base">
+            I enjoy building responsive, user-friendly, and
+            practical web applications that solve real-world
+            problems.
+          </p>
+
+          {/* Main Buttons */}
+          <div className="mt-7 flex flex-wrap gap-3">
+            <a
+              href={RESUME_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-primary to-secondary px-5 py-3 text-sm font-bold text-white transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/20 focus:outline-none focus:ring-4 focus:ring-primary/20"
+            >
+              <span className="material-symbols-outlined">
+                description
+              </span>
+
+              View Resume
+            </a>
+
+            <a
+              href="#contact"
+              className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-5 py-3 text-sm font-bold text-slate-800 transition-all hover:-translate-y-0.5 hover:border-primary hover:text-primary dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+            >
+              <span className="material-symbols-outlined">
+                mail
+              </span>
+
+              Contact Me
+            </a>
+          </div>
+
+          {/* Social Links */}
+          <div className="mt-7 flex flex-wrap items-center gap-3">
+            <HeroSocialLink
+              href="https://github.com/raselahmed2023"
+              label="GitHub"
+              icon="code"
+            />
+
+            <HeroSocialLink
+              href="https://www.linkedin.com/in/rasel-ahmed06/"
+              label="LinkedIn"
+              icon="work"
+            />
+
+            <HeroSocialLink
+              href="https://leetcode.com/u/rasel_ahmed06/"
+              label="LeetCode"
+              icon="terminal"
+            />
+
+            <HeroSocialLink
+              href="mailto:raselahmediu22@gmail.com"
+              label="Email"
+              icon="mail"
+              external={false}
+            />
+          </div>
+        </motion.div>
+
+        {/* Professional Photo */}
+        <motion.div
+          initial={{
+            opacity: 0,
+            x: 30,
+          }}
+          animate={{
+            opacity: 1,
+            x: 0,
+          }}
+          transition={{
+            duration: 0.7,
+          }}
+          className="order-1 flex justify-center lg:order-2 lg:justify-end"
         >
-          <span className="material-symbols-outlined text-lg group-hover:translate-y-1 transition-transform">
-            download
-          </span>
-          Download Resume
-        </a>
-        <div className="flex gap-4 ml-2">
-          <MotionA
-            className="text-slate-500 hover:text-primary transition-colors flex items-center gap-1"
-            href="https://github.com/raselahmed2023"
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ y: -3 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <i className="fa-brands fa-github text-xl"></i>
-          </MotionA>
-          <MotionA
-            className="text-slate-500 hover:text-primary transition-colors flex items-center gap-1"
-            href="https://www.linkedin.com/in/rasel-ahmed06/"
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ y: -3 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <i className="fa-brands fa-linkedin text-xl"></i>
-          </MotionA>
-        </div>
-      </MotionDiv>
-    </MotionSection >
+          <div className="relative">
+            <div className="absolute -inset-5 rounded-full bg-gradient-to-br from-primary/30 to-secondary/30 blur-2xl" />
+
+            <div className="relative h-64 w-64 overflow-hidden rounded-3xl border-4 border-white bg-slate-100 shadow-2xl dark:border-slate-800 dark:bg-slate-900 sm:h-80 sm:w-80">
+              <Image
+                src="/profile.jpg"
+                alt="Rasel Ahmed"
+                fill
+                priority
+                sizes="(max-width: 640px) 256px, 320px"
+                className="object-cover object-top"
+              />
+            </div>
+
+            <div className="absolute -bottom-4 -left-4 rounded-2xl border border-slate-200 bg-white px-4 py-3 shadow-lg dark:border-slate-700 dark:bg-slate-900">
+              <div className="flex items-center gap-2">
+                <span className="relative flex h-3 w-3">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
+
+                  <span className="relative inline-flex h-3 w-3 rounded-full bg-green-500" />
+                </span>
+
+                <p className="text-xs font-bold text-slate-700 dark:text-slate-200">
+                  Open to Opportunities
+                </p>
+              </div>
+            </div>
+
+            <div className="absolute -right-4 top-8 flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-secondary text-white shadow-lg">
+              <span className="material-symbols-outlined">
+                code
+              </span>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+interface HeroSocialLinkProps {
+  href: string;
+  label: string;
+  icon: string;
+  external?: boolean;
+}
+
+const HeroSocialLink = ({
+  href,
+  label,
+  icon,
+  external = true,
+}: HeroSocialLinkProps) => {
+  return (
+    <a
+      href={href}
+      target={external ? "_blank" : undefined}
+      rel={
+        external ? "noopener noreferrer" : undefined
+      }
+      aria-label={label}
+      title={label}
+      className="group inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs font-semibold text-slate-600 transition-all hover:-translate-y-1 hover:border-primary hover:text-primary hover:shadow-md dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300"
+    >
+      <span className="material-symbols-outlined text-lg transition-transform group-hover:scale-110">
+        {icon}
+      </span>
+
+      <span>{label}</span>
+    </a>
   );
 };
 
