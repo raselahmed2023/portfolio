@@ -1,6 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useState,
+} from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -51,17 +55,18 @@ const Navbar = () => {
 
   const isHomePage = pathname === "/";
 
-  const createSectionLink = (
-    sectionId: string
-  ) => {
-    return isHomePage
-      ? `#${sectionId}`
-      : `/#${sectionId}`;
-  };
+  const createSectionLink = useCallback(
+    (sectionId: string) => {
+      return isHomePage
+        ? `#${sectionId}`
+        : `/#${sectionId}`;
+    },
+    [isHomePage]
+  );
 
-  const closeMenu = () => {
+  const closeMenu = useCallback(() => {
     setIsMenuOpen(false);
-  };
+  }, []);
 
   useEffect(() => {
     const frameId = window.requestAnimationFrame(
@@ -108,7 +113,7 @@ const Navbar = () => {
       event: KeyboardEvent
     ) => {
       if (event.key === "Escape") {
-        setIsMenuOpen(false);
+        closeMenu();
       }
     };
 
@@ -123,7 +128,7 @@ const Navbar = () => {
         handleEscapeKey
       );
     };
-  }, []);
+  }, [closeMenu]);
 
   useEffect(() => {
     if (!isHomePage) {
@@ -191,6 +196,12 @@ const Navbar = () => {
     localStorage.setItem(
       "portfolio-theme",
       nextTheme ? "dark" : "light"
+    );
+  };
+
+  const toggleMobileMenu = () => {
+    setIsMenuOpen(
+      (previousValue) => !previousValue
     );
   };
 
@@ -291,12 +302,7 @@ const Navbar = () => {
 
           <button
             type="button"
-            onClick={() =>
-              setIsMenuOpen(
-                (previousValue) =>
-                  !previousValue
-              )
-            }
+            onClick={toggleMobileMenu}
             className="flex h-10 w-10 items-center justify-center rounded-lg text-slate-700 transition-colors hover:bg-slate-100 hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:text-slate-200 dark:hover:bg-slate-800 dark:focus:ring-offset-slate-950 lg:hidden"
             aria-label={
               isMenuOpen
@@ -307,7 +313,9 @@ const Navbar = () => {
             aria-controls="mobile-navigation-menu"
           >
             <span className="material-symbols-outlined text-2xl">
-              {isMenuOpen ? "close" : "menu"}
+              {isMenuOpen
+                ? "close"
+                : "menu"}
             </span>
           </button>
         </div>
@@ -315,8 +323,8 @@ const Navbar = () => {
 
       <button
         type="button"
-        aria-label="Close navigation menu"
         onClick={closeMenu}
+        aria-label="Close navigation menu"
         className={`fixed inset-0 top-16 z-40 bg-slate-950/45 backdrop-blur-sm transition-opacity duration-300 lg:hidden ${
           isMenuOpen
             ? "visible opacity-100"
