@@ -487,59 +487,262 @@ export const Experience = () => {
 };
 
 export const Skills = () => {
-  const categories = [
+  const skillCategories = [
     {
-      name: "Frontend",
-      color: "bg-primary",
-      skills: ["HTML5", "CSS3", "JavaScript (ES6+)", "React.js", "Next.js", "Tailwind CSS", "DaisyUI"]
+      title: "Frontend",
+      icon: "devices",
+      description:
+        "Technologies I use to build responsive and interactive user interfaces.",
+      skills: [
+        {
+          name: "HTML5",
+          icon: "html",
+        },
+        {
+          name: "CSS3",
+          icon: "css",
+        },
+        {
+          name: "JavaScript",
+          icon: "javascript",
+        },
+        {
+          name: "TypeScript",
+          icon: "data_object",
+        },
+        {
+          name: "React",
+          icon: "code_blocks",
+        },
+        {
+          name: "Next.js",
+          icon: "web",
+        },
+        {
+          name: "Tailwind CSS",
+          icon: "palette",
+        },
+        {
+          name: "DaisyUI",
+          icon: "widgets",
+        },
+      ],
     },
     {
-      name: "Backend",
-      color: "bg-secondary",
-      skills: ["Node.js", "Express.js", "MongoDB", "REST API", "JWT Authentication", "Better Auth", "Google OAuth"]
+      title: "Backend",
+      icon: "dns",
+      description:
+        "Technologies I use to build APIs, authentication systems, and server-side applications.",
+      skills: [
+        {
+          name: "Node.js",
+          icon: "terminal",
+        },
+        {
+          name: "Express.js",
+          icon: "api",
+        },
+        {
+          name: "REST API",
+          icon: "hub",
+        },
+        {
+          name: "JWT",
+          icon: "key",
+        },
+        {
+          name: "Better Auth",
+          icon: "verified_user",
+        },
+        {
+          name: "Mongoose",
+          icon: "schema",
+        },
+      ],
     },
     {
-      name: "Tools & Deployment",
-      color: "bg-secondary",
-      skills: ["Git", "GitHub", "VS Code", "Vercel", "Netlify", "Render"]
+      title: "Database",
+      icon: "database",
+      description:
+        "Database technologies I use to store, manage, and retrieve application data.",
+      skills: [
+        {
+          name: "MongoDB",
+          icon: "database",
+        },
+        {
+          name: "MongoDB Atlas",
+          icon: "cloud",
+        },
+        {
+          name: "Mongoose",
+          icon: "account_tree",
+        },
+        {
+          name: "Local Storage",
+          icon: "inventory_2",
+        },
+      ],
     },
     {
-      name: "AI & Productivity",
-      color: "bg-primary",
-      skills: ["ChatGPT", "Gemini", "GitHub Copilot", "Cursor", "Prompt Engineering", "AI-Assisted Debugging"]
+      title: "State & Data",
+      icon: "sync_alt",
+      description:
+        "Tools I use for application state, server data, and asynchronous operations.",
+      skills: [
+        {
+          name: "TanStack Query",
+          icon: "sync",
+        },
+        {
+          name: "React Context",
+          icon: "share",
+        },
+        {
+          name: "React Hooks",
+          icon: "extension",
+        },
+        {
+          name: "Fetch API",
+          icon: "download",
+        },
+        {
+          name: "Axios",
+          icon: "swap_horiz",
+        },
+      ],
     },
     {
-      name: "Management & Creative",
-      color: "bg-primary",
-      skills: ["Leadership", "Teamwork", "Communication", "Critical Thinking", "Time Management", "Negotiation", "Content Writing"]
-    }
+      title: "AI Integration",
+      icon: "smart_toy",
+      description:
+        "AI services and integrations used in my intelligent web applications.",
+      skills: [
+        {
+          name: "Gemini AI",
+          icon: "auto_awesome",
+        },
+        {
+          name: "Groq AI",
+          icon: "bolt",
+        },
+        {
+          name: "Prompt Engineering",
+          icon: "psychology",
+        },
+        {
+          name: "AI API Integration",
+          icon: "integration_instructions",
+        },
+      ],
+    },
+    {
+      title: "Tools & Deployment",
+      icon: "construction",
+      description:
+        "Development, collaboration, testing, and deployment tools used in my workflow.",
+      skills: [
+        {
+          name: "Git",
+          icon: "account_tree",
+        },
+        {
+          name: "GitHub",
+          icon: "code",
+        },
+        {
+          name: "VS Code",
+          icon: "terminal",
+        },
+        {
+          name: "Postman",
+          icon: "send",
+        },
+        {
+          name: "Vercel",
+          icon: "cloud_upload",
+        },
+        {
+          name: "Netlify",
+          icon: "public",
+        },
+        {
+          name: "Render",
+          icon: "deployed_code",
+        },
+        {
+          name: "Figma",
+          icon: "design_services",
+        },
+      ],
+    },
   ];
 
   return (
-    <section className="mb-20" id="skills">
-      <div className="flex items-center gap-3 mb-8">
-        <span className="material-symbols-outlined text-primary">verified</span>
-        <h2 className="heading-font text-3xl font-extrabold uppercase tracking-tight">Skills</h2>
+    <section
+      id="skills"
+      className="scroll-mt-24 py-16"
+    >
+      <div className="mb-9">
+        <div className="mb-4 flex items-center gap-3">
+          <span className="material-symbols-outlined text-3xl text-primary">
+            code_blocks
+          </span>
+
+          <h2 className="heading-font text-3xl font-extrabold uppercase tracking-tight md:text-4xl">
+            Skills
+          </h2>
+        </div>
+
+        <p className="max-w-2xl text-sm leading-7 text-slate-500 dark:text-slate-400 md:text-base">
+          Technologies and tools I use to design, build,
+          test, and deploy modern web applications.
+        </p>
       </div>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {categories.map((cat) => (
-          <motion.div
-            key={cat.name}
-            className="space-y-4"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+
+      <div className="space-y-7">
+        {skillCategories.map((category) => (
+          <article
+            key={category.title}
+            className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900/70 md:p-7"
           >
-            <h3 className="mono-font text-sm font-bold uppercase tracking-widest text-slate-400">{cat.name}</h3>
-            <ul className="space-y-2 text-sm">
-              {cat.skills.map((skill) => (
-                <li key={skill} className="flex items-center gap-2">
-                  <span className={`w-1.5 h-1.5 ${cat.color} rounded-full`}></span>
-                  {skill}
-                </li>
+            <div className="mb-6 flex items-start gap-4">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                <span className="material-symbols-outlined text-2xl">
+                  {category.icon}
+                </span>
+              </div>
+
+              <div>
+                <h3 className="heading-font text-xl font-bold text-slate-900 dark:text-white md:text-2xl">
+                  {category.title}
+                </h3>
+
+                <p className="mt-1 max-w-2xl text-xs leading-6 text-slate-500 dark:text-slate-400 sm:text-sm">
+                  {category.description}
+                </p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+              {category.skills.map((skill) => (
+                <div
+                  key={skill.name}
+                  className="group flex min-h-28 flex-col items-center justify-center rounded-xl border border-slate-200 bg-slate-50 p-4 text-center transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:bg-primary/5 hover:shadow-lg hover:shadow-primary/10 dark:border-slate-700 dark:bg-slate-950/60 dark:hover:border-primary dark:hover:bg-primary/10"
+                >
+                  <div className="mb-3 flex h-11 w-11 items-center justify-center rounded-xl bg-white text-slate-600 shadow-sm transition-all group-hover:bg-primary group-hover:text-white dark:bg-slate-900 dark:text-slate-300">
+                    <span className="material-symbols-outlined text-2xl">
+                      {skill.icon}
+                    </span>
+                  </div>
+
+                  <p className="text-xs font-bold text-slate-800 dark:text-slate-100 sm:text-sm">
+                    {skill.name}
+                  </p>
+                </div>
               ))}
-            </ul>
-          </motion.div>
+            </div>
+          </article>
         ))}
       </div>
     </section>
