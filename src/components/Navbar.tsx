@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  useCallback,
-  useEffect,
-  useState,
-} from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -48,44 +44,53 @@ const Navbar = () => {
   const pathname = usePathname();
 
   const [isDark, setIsDark] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] =
+    useState(false);
   const [activeSection, setActiveSection] =
     useState("home");
 
   const isHomePage = pathname === "/";
 
-  const createSectionLink = useCallback(
-    (sectionId: string) => {
-      return isHomePage
-        ? `#${sectionId}`
-        : `/#${sectionId}`;
-    },
-    [isHomePage]
-  );
+  const createSectionLink = (
+    sectionId: string
+  ) => {
+    return isHomePage
+      ? `#${sectionId}`
+      : `/#${sectionId}`;
+  };
 
-  const closeMenu = useCallback(() => {
+  const closeMenu = () => {
     setIsMenuOpen(false);
-  }, []);
+  };
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem(
-      "portfolio-theme"
+    const frameId = window.requestAnimationFrame(
+      () => {
+        const savedTheme = localStorage.getItem(
+          "portfolio-theme"
+        );
+
+        const systemPrefersDark =
+          window.matchMedia(
+            "(prefers-color-scheme: dark)"
+          ).matches;
+
+        const shouldUseDarkMode =
+          savedTheme === "dark" ||
+          (!savedTheme && systemPrefersDark);
+
+        setIsDark(shouldUseDarkMode);
+
+        document.documentElement.classList.toggle(
+          "dark",
+          shouldUseDarkMode
+        );
+      }
     );
 
-    const systemPrefersDark = window.matchMedia(
-      "(prefers-color-scheme: dark)"
-    ).matches;
-
-    const shouldUseDarkMode =
-      savedTheme === "dark" ||
-      (!savedTheme && systemPrefersDark);
-
-    setIsDark(shouldUseDarkMode);
-
-    document.documentElement.classList.toggle(
-      "dark",
-      shouldUseDarkMode
-    );
+    return () => {
+      window.cancelAnimationFrame(frameId);
+    };
   }, []);
 
   useEffect(() => {
@@ -99,9 +104,11 @@ const Navbar = () => {
   }, [isMenuOpen]);
 
   useEffect(() => {
-    const handleEscapeKey = (event: KeyboardEvent) => {
+    const handleEscapeKey = (
+      event: KeyboardEvent
+    ) => {
       if (event.key === "Escape") {
-        closeMenu();
+        setIsMenuOpen(false);
       }
     };
 
@@ -116,11 +123,7 @@ const Navbar = () => {
         handleEscapeKey
       );
     };
-  }, [closeMenu]);
-
-  useEffect(() => {
-    closeMenu();
-  }, [pathname, closeMenu]);
+  }, []);
 
   useEffect(() => {
     if (!isHomePage) {
@@ -132,7 +135,8 @@ const Navbar = () => {
     );
 
     const updateActiveSection = () => {
-      const scrollPosition = window.scrollY + 150;
+      const scrollPosition =
+        window.scrollY + 150;
 
       let currentSection = "home";
 
@@ -151,7 +155,10 @@ const Navbar = () => {
       setActiveSection(currentSection);
     };
 
-    updateActiveSection();
+    const frameId =
+      window.requestAnimationFrame(
+        updateActiveSection
+      );
 
     window.addEventListener(
       "scroll",
@@ -162,6 +169,8 @@ const Navbar = () => {
     );
 
     return () => {
+      window.cancelAnimationFrame(frameId);
+
       window.removeEventListener(
         "scroll",
         updateActiveSection
@@ -183,10 +192,6 @@ const Navbar = () => {
       "portfolio-theme",
       nextTheme ? "dark" : "light"
     );
-  };
-
-  const toggleMobileMenu = () => {
-    setIsMenuOpen((previousValue) => !previousValue);
   };
 
   const handleNavigationClick = (
@@ -227,7 +232,8 @@ const Navbar = () => {
           {navigationItems.map((item) => {
             const isActive =
               isHomePage &&
-              activeSection === item.sectionId;
+              activeSection ===
+                item.sectionId;
 
             return (
               <Link
@@ -285,7 +291,12 @@ const Navbar = () => {
 
           <button
             type="button"
-            onClick={toggleMobileMenu}
+            onClick={() =>
+              setIsMenuOpen(
+                (previousValue) =>
+                  !previousValue
+              )
+            }
             className="flex h-10 w-10 items-center justify-center rounded-lg text-slate-700 transition-colors hover:bg-slate-100 hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:text-slate-200 dark:hover:bg-slate-800 dark:focus:ring-offset-slate-950 lg:hidden"
             aria-label={
               isMenuOpen
@@ -302,14 +313,15 @@ const Navbar = () => {
         </div>
       </nav>
 
-      <div
+      <button
+        type="button"
+        aria-label="Close navigation menu"
+        onClick={closeMenu}
         className={`fixed inset-0 top-16 z-40 bg-slate-950/45 backdrop-blur-sm transition-opacity duration-300 lg:hidden ${
           isMenuOpen
             ? "visible opacity-100"
             : "invisible opacity-0"
         }`}
-        onClick={closeMenu}
-        aria-hidden="true"
       />
 
       <div
@@ -325,7 +337,8 @@ const Navbar = () => {
             {navigationItems.map((item) => {
               const isActive =
                 isHomePage &&
-                activeSection === item.sectionId;
+                activeSection ===
+                  item.sectionId;
 
               return (
                 <Link
@@ -356,9 +369,8 @@ const Navbar = () => {
 
           <div className="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-3 dark:border-slate-800 dark:bg-slate-900">
             <p className="text-center text-xs leading-5 text-slate-500 dark:text-slate-400">
-              Frontend Developer focused on building
-              responsive and user-friendly web
-              applications.
+              Frontend Developer | MERN Stack
+              &amp; Full-Stack Enthusiast
             </p>
           </div>
         </div>

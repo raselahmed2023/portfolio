@@ -60,8 +60,8 @@ export const Experience = () => {
         </div>
 
         <p className="max-w-2xl text-sm leading-7 text-slate-500 dark:text-slate-400 md:text-base">
-          My leadership, organizational, internship,
-          content creation, and development experience.
+          My leadership, organizational, design, IT, and content
+          creation experience.
         </p>
       </div>
 
@@ -287,7 +287,7 @@ export const Education = () => {
       institution:
         "Islamic University, Kushtia, Bangladesh",
       period: "March 2022 – January 2026",
-      status: "CGP 3.24",
+      status: "CGPA 3.24",
       icon: "workspace_premium",
       description:
         "Completed a BBA in Accounting and Information Systems, developing knowledge in accounting, auditing, finance, business technology, information systems, research, and data analysis.",

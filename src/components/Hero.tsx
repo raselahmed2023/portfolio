@@ -37,7 +37,7 @@ const Hero = () => {
           </h1>
 
           <h2 className="heading-font mt-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-2xl font-bold text-transparent sm:text-3xl">
-            MERN Stack & Full-Stack Enthusiast
+            Frontend Developer | MERN Stack & Full-Stack Enthusiast
           </h2>
 
           <p className="mt-5 max-w-xl text-sm leading-7 text-slate-600 dark:text-slate-300 sm:text-base">

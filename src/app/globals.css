@@ -6,16 +6,14 @@
   --color-background-light: #f8fafc;
   --color-background-dark: #0a0a0a;
 
-  --font-heading: "Inter", sans-serif;
-  --font-display: "Space Mono", monospace;
-  --font-sans: "Inter", sans-serif;
+  --font-heading: var(--font-space-grotesk);
+  --font-display: var(--font-jetbrains-mono);
+  --font-sans: var(--font-inter);
 
   --variant-dark: .dark &;
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
-
-
 
 :root {
   --background: #f8fafc;
@@ -30,21 +28,28 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans);
-  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: var(--font-sans), Arial, sans-serif;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 .heading-font {
-  font-family: var(--font-heading);
+  font-family: var(--font-heading), Arial, sans-serif;
 }
 
 .mono-font {
-  font-family: var(--font-display);
+  font-family: var(--font-display), monospace;
 }
 
 .gradient-text {
-  background: linear-gradient(to right, #10b981, #0ea5e9);
+  background: linear-gradient(
+    to right,
+    #10b981,
+    #0ea5e9
+  );
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 

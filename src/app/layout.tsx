@@ -1,25 +1,34 @@
 import type { Metadata } from "next";
-import { Inter, Space_Mono } from "next/font/google";
+import {
+  Inter,
+  JetBrains_Mono,
+  Space_Grotesk,
+} from "next/font/google";
 import "./globals.css";
-import SmoothScroll from "@/components/SmoothScroll";
-import CustomCursor from "@/components/CustomCursor";
-import MovingLines from "@/components/MovingLines";
-import ClickEffect from "@/components/ClickEffect";
 
 const inter = Inter({
-  variable: "--font-sans",
   subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
 });
 
-const spaceMono = Space_Mono({
-  variable: "--font-display",
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  weight: ["400", "700"],
+  display: "swap",
+  variable: "--font-space-grotesk",
+});
+
+const jetBrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-jetbrains-mono",
 });
 
 export const metadata: Metadata = {
-  title: "Rasel Ahmed | Web Developer",
-  description: "Portfolio of Rasel Ahmed, a Full Stack Developer building modern web applications with a focus on aesthetics and functionality.",
+  title:
+    "Rasel Ahmed | Frontend Developer & Full-Stack Enthusiast",
+  description:
+    "Portfolio of Rasel Ahmed, a Frontend Developer and MERN Stack & Full-Stack Enthusiast.",
 };
 
 export default function RootLayout({
@@ -30,29 +39,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${spaceMono.variable} h-full antialiased`}
+      suppressHydrationWarning
+      className={`${inter.variable} ${spaceGrotesk.variable} ${jetBrainsMono.variable}`}
     >
-      <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
-          rel="stylesheet"
-        />
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        />
-      </head>
-      <body className="min-h-full flex flex-col relative overflow-x-hidden">
-        <CustomCursor />
-        <MovingLines />
-        <ClickEffect />
-        <SmoothScroll>
-          <div className="fixed inset-0 pointer-events-none bg-noise z-0"></div>
-          {children}
-        </SmoothScroll>
+      <body className={`${inter.className} antialiased`}>
+        {children}
       </body>
     </html>
   );
 }
-
-
