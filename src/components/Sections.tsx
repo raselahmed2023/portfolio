@@ -609,95 +609,161 @@ export const Education = () => {
 
 export const AboutMe = () => {
   return (
-    <section className="mb-20" id="about">
-      <div className="flex items-center gap-3 mb-8">
-        <span className="material-symbols-outlined text-primary">person</span>
-        <h2 className="heading-font text-3xl font-extrabold uppercase tracking-tight">About Me</h2>
-      </div>
-      <div className="grid md:grid-cols-2 gap-12 items-center">
-        <motion.div
-          className="order-2 md:order-1"
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
-          <p className="mb-6 leading-relaxed">
-            I'm <span className="text-primary font-semibold">Rasel Ahmed</span>, a Frontend Developer and MBA student at Islamic University, Kushtia, majoring in <span className="text-secondary">Accounting & Information Systems</span>. I specialize in building modern, responsive, and user-friendly web applications using React.js, Next.js, JavaScript, Tailwind CSS, Node.js, and MongoDB.
-          </p>
+    <section
+      id="about"
+      className="scroll-mt-24 py-16"
+    >
+      <div className="mb-8">
+        <div className="mb-4 flex items-center gap-3">
+          <span className="material-symbols-outlined text-3xl text-primary">
+            person
+          </span>
 
-          <p className="mb-6 leading-relaxed text-slate-500 dark:text-slate-400">
-            Through hands-on projects and continuous learning, I have developed experience in authentication, API integration, CRUD operations, responsive design, and full-stack web development. Passionate about technology, problem-solving, and personal growth, I aim to create impactful digital solutions while continuously improving my technical and professional skills.
-          </p>
-          <div className="mb-8">
-            <h4 className="mono-font text-sm font-bold uppercase tracking-widest text-primary mb-4">Current Goals</h4>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-slate-500 dark:text-slate-400">
-              <li className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-xs text-primary">rocket_launch</span>
-                Job-Ready Frontend Developer
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-xs text-primary">analytics</span>
-                Improve Data Analysis Skills
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-xs text-primary">podcasts</span>
-                Start Educational Podcast
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-xs text-primary">groups</span>
-                Build Student Community
-              </li>
-            </ul>
+          <h2 className="heading-font text-3xl font-extrabold uppercase tracking-tight md:text-4xl">
+            About Me
+          </h2>
+        </div>
+
+        <p className="max-w-2xl text-sm leading-7 text-slate-500 dark:text-slate-400 md:text-base">
+          A little more about my programming journey,
+          interests, personality, and professional goals.
+        </p>
+      </div>
+
+      <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+        <article className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900/70 md:p-8">
+          <div className="space-y-5 text-sm leading-7 text-slate-600 dark:text-slate-300 md:text-base">
+            <p>
+              My programming journey started with learning
+              the basic building blocks of the web, including
+              HTML, CSS, and JavaScript. At first, I focused
+              on creating simple web pages. As I continued
+              learning, I became interested in building
+              interactive and responsive applications using
+              React, Next.js, TypeScript, Node.js, Express.js,
+              and MongoDB.
+            </p>
+
+            <p>
+              I enjoy transforming ideas into practical web
+              applications that solve real problems. I am
+              particularly interested in frontend development,
+              responsive user interfaces, full-stack
+              applications, API integration, authentication,
+              dashboard development, and AI-powered web
+              platforms.
+            </p>
+
+            <p>
+              While developing projects, I enjoy solving
+              technical problems, improving user experience,
+              and learning new technologies. Projects such as
+              TripMind, Rentora, ReSell Hub, SportNest, and
+              LifeLink have helped me improve my skills in
+              full-stack development, application architecture,
+              responsive design, and secure API communication.
+            </p>
+
+            <p>
+              Outside programming, I enjoy reading about
+              philosophy, history, international relations,
+              technology, and personal development. I also
+              enjoy creating educational content, participating
+              in organizational activities, and helping others
+              understand difficult topics in a simple way.
+            </p>
+
+            <p>
+              I consider myself a curious, responsible, and
+              continuously improving developer. My goal is to
+              work with a professional development team, solve
+              meaningful problems, and build reliable digital
+              products that provide real value to users.
+            </p>
           </div>
-          <div className="flex gap-4">
-            {[
-              { val: "0", label: "Years Experience" },
-              { val: "10+", label: "Projects Built" },
-              { val: "0", label: "Happy Clients" }
-            ].map((stat, i) => (
-              <div key={stat.label} className="flex items-center gap-4">
-                <div className="text-center">
-                  <div className="text-2xl font-bold mono-font">{stat.val}</div>
-                  <div className="text-[10px] uppercase text-slate-500 font-bold">{stat.label}</div>
-                </div>
-                {i < 2 && <div className="w-px h-10 bg-slate-200 dark:bg-slate-800"></div>}
-              </div>
-            ))}
-          </div>
-        </motion.div>
-        <motion.div
-          className="order-1 md:order-2 flex justify-center"
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
-          <div className="relative">
-            <div className="absolute -inset-4 bg-gradient-to-tr from-primary to-secondary opacity-20 blur-2xl rounded-full"></div>
-            <motion.div
-              animate={{
-                rotate: [3, -3, 3],
-              }}
-              transition={{
-                duration: 6,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-              whileHover={{ rotate: 0, scale: 1.05 }}
-              className="relative w-64 h-64 md:w-80 md:h-80"
-            >
-              <Image
-                alt="Rasel Ahmed"
-                src="/profile.jpg"
-                fill
-                className="rounded-3xl object-cover shadow-2xl"
-              />
-            </motion.div>
-          </div>
-        </motion.div>
+        </article>
+
+        <aside className="space-y-5">
+          <InfoCard
+            icon="code"
+            title="What I Enjoy"
+            items={[
+              "Building responsive web applications",
+              "Creating clean and reusable components",
+              "Working with REST APIs and databases",
+              "Solving UI and application logic problems",
+              "Exploring AI-powered web solutions",
+            ]}
+          />
+
+          <InfoCard
+            icon="interests"
+            title="Interests & Hobbies"
+            items={[
+              "Reading philosophy and history",
+              "Learning about technology",
+              "Educational content creation",
+              "Organizational activities",
+              "Continuous self-development",
+            ]}
+          />
+
+          <InfoCard
+            icon="target"
+            title="Career Goal"
+            items={[
+              "Become a skilled full-stack developer",
+              "Contribute to real-world software products",
+              "Work with experienced development teams",
+              "Build accessible and useful applications",
+            ]}
+          />
+        </aside>
       </div>
     </section>
+  );
+};
+
+interface InfoCardProps {
+  icon: string;
+  title: string;
+  items: string[];
+}
+
+const InfoCard = ({
+  icon,
+  title,
+  items,
+}: InfoCardProps) => {
+  return (
+    <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all hover:-translate-y-1 hover:border-primary hover:shadow-lg hover:shadow-primary/10 dark:border-slate-800 dark:bg-slate-900/70">
+      <div className="mb-4 flex items-center gap-3">
+        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
+          <span className="material-symbols-outlined">
+            {icon}
+          </span>
+        </div>
+
+        <h3 className="heading-font text-lg font-bold text-slate-900 dark:text-white">
+          {title}
+        </h3>
+      </div>
+
+      <ul className="space-y-3">
+        {items.map((item) => (
+          <li
+            key={item}
+            className="flex items-start gap-2 text-sm leading-6 text-slate-600 dark:text-slate-300"
+          >
+            <span className="material-symbols-outlined mt-1 text-sm text-secondary">
+              check_circle
+            </span>
+
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
 
