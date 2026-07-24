@@ -46,9 +46,9 @@ export const Experience = () => {
   return (
     <section
       id="experience"
-      className="scroll-mt-24 py-14"
+      className="scroll-mt-24 py-12"
     >
-      <div className="mb-8">
+      <div className="mb-7">
         <div className="mb-3 flex items-center gap-3">
           <span className="material-symbols-outlined text-3xl text-primary">
             work_history
@@ -65,52 +65,50 @@ export const Experience = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 items-stretch gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
         {experienceItems.map((experience) => (
           <article
             key={`${experience.role}-${experience.organization}`}
-            className="group flex h-full min-h-[350px] flex-col rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-lg hover:shadow-primary/10 dark:border-slate-800 dark:bg-slate-900/70"
+            className="group rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-md dark:border-slate-800 dark:bg-slate-900/70"
           >
             <div className="mb-4 flex items-start justify-between gap-3">
-              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
                 <span className="material-symbols-outlined text-xl">
                   {experience.icon}
                 </span>
               </div>
 
-              <span className="rounded-full border border-secondary/30 bg-secondary/10 px-2.5 py-1 text-[9px] font-bold uppercase tracking-wide text-secondary">
+              <span className="rounded-full border border-secondary/30 bg-secondary/10 px-2 py-1 text-[9px] font-bold uppercase tracking-wide text-secondary">
                 {experience.type}
               </span>
             </div>
 
-            <div className="min-h-[130px]">
-              <h3 className="heading-font text-lg font-bold leading-snug text-slate-900 dark:text-white">
-                {experience.role}
-              </h3>
+            <h3 className="heading-font text-base font-bold leading-snug text-slate-900 dark:text-white">
+              {experience.role}
+            </h3>
 
-              <p className="mt-2 text-sm font-semibold leading-5 text-primary">
-                {experience.organization}
-              </p>
+            <p className="mt-1 text-xs font-semibold leading-5 text-primary">
+              {experience.organization}
+            </p>
 
-              <p className="mt-3 flex items-start gap-2 text-xs leading-5 text-slate-500 dark:text-slate-400">
-                <span className="material-symbols-outlined mt-0.5 text-base">
-                  calendar_month
-                </span>
+            <p className="mt-2 flex items-center gap-2 text-[11px] text-slate-500 dark:text-slate-400">
+              <span className="material-symbols-outlined text-base">
+                calendar_month
+              </span>
 
-                <span>{experience.period}</span>
-              </p>
-            </div>
+              <span>{experience.period}</span>
+            </p>
 
-            <div className="my-4 h-px bg-slate-200 dark:bg-slate-800" />
+            <div className="my-3 h-px bg-slate-200 dark:bg-slate-800" />
 
-            <ul className="mt-auto space-y-3">
+            <ul className="space-y-2">
               {experience.responsibilities.map(
                 (responsibility) => (
                   <li
                     key={responsibility}
-                    className="flex items-start gap-2 text-xs leading-5 text-slate-600 dark:text-slate-300"
+                    className="flex items-start gap-2 text-[11px] leading-5 text-slate-600 dark:text-slate-300"
                   >
-                    <span className="material-symbols-outlined mt-0.5 shrink-0 text-base text-secondary">
+                    <span className="material-symbols-outlined mt-0.5 shrink-0 text-sm text-secondary">
                       check_circle
                     </span>
 
