@@ -1,56 +1,66 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import Image from 'next/image';
+import { motion } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
+import type { Project } from "@/data/projects";
 
-interface ProjectProps {
-  title: string;
-  tags: { name: string; color: string }[];
-  description: string;
-  image: string;
+interface ProjectCardProps {
+  project: Project;
 }
 
-const ProjectCard = ({ title, tags, description, image }: ProjectProps) => {
+const ProjectCard = ({ project }: ProjectCardProps) => {
   return (
-    <motion.div 
-      className="project-card group bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden hover:border-primary/50 transition-all shadow-lg hover:shadow-primary/5 text-slate-900 dark:text-slate-100"
-      whileHover={{ y: -10, scale: 1.02 }}
-      transition={{ duration: 0.4, ease: [0.21, 0.47, 0.32, 0.98] }}
+    <motion.article
+      whileHover={{ y: -5 }}
+      transition={{ duration: 0.3 }}
+      className="group flex h-full flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 dark:border-slate-800 dark:bg-slate-900/60"
     >
-      <div className="aspect-video relative overflow-hidden bg-slate-100 dark:bg-slate-800">
-        <motion.div
-          className="w-full h-full relative"
-          whileHover={{ scale: 1.1 }}
-          transition={{ duration: 0.8 }}
-        >
-          <Image 
-            alt={title} 
-            src={image}
-            fill
-            className="object-cover" 
-          />
-        </motion.div>
-        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      <div className="relative aspect-video overflow-hidden bg-slate-100 dark:bg-slate-800">
+        <Image
+          src={project.image}
+          alt={`${project.title} project preview`}
+          fill
+          sizes="(max-width: 767px) 50vw, (max-width: 1023px) 33vw, 25vw"
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
       </div>
-      <div className="p-6">
-        <h3 className="heading-font font-bold text-lg mb-2">{title}</h3>
-        <div className="flex gap-2 mb-4">
-          {tags.map((tag) => (
-            <span 
+
+      <div className="flex flex-1 flex-col p-3 md:p-4">
+        <h3 className="heading-font mb-2 text-sm font-bold leading-tight text-slate-900 dark:text-white sm:text-base">
+          {project.title}
+        </h3>
+
+        <div className="mb-3 flex flex-wrap gap-1">
+          {project.tags.slice(0, 3).map((tag) => (
+            <span
               key={tag.name}
-              className={`text-[10px] ${tag.color} px-2 py-0.5 rounded border uppercase tracking-wider font-bold`}
+              className={`rounded border px-1.5 py-0.5 text-[7px] font-bold uppercase tracking-wide sm:text-[9px] ${tag.color}`}
             >
               {tag.name}
             </span>
           ))}
         </div>
-        <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
-          {description}
+
+        <p className="mb-4 line-clamp-3 flex-1 text-[10px] leading-relaxed text-slate-500 dark:text-slate-400 sm:text-xs">
+          {project.shortDescription}
         </p>
+
+        <Link
+          href={`/projects/${project.slug}`}
+          className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-gradient-to-r from-primary to-secondary px-3 py-2 text-[10px] font-bold text-white transition-all hover:shadow-lg hover:shadow-primary/20 sm:text-xs"
+        >
+          View Details
+
+          <span className="material-symbols-outlined text-base">
+            arrow_forward
+          </span>
+        </Link>
       </div>
-    </motion.div>
+    </motion.article>
   );
 };
 
 export default ProjectCard;
-
