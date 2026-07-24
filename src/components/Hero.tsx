@@ -4,7 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 
 const RESUME_URL =
-  "https://drive.google.com/uc?export=download&id=1Wz0ls0Cm7kpV-uAKF2aIjzcslyMmOkQ-";
+  "https://drive.google.com/file/d/1Wz0ls0Cm7kpV-uAKF2aIjzcslyMmOkQ-/view";
 
 const Hero = () => {
   return (
