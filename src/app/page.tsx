@@ -3,7 +3,6 @@ import Hero from "@/components/Hero";
 import ProjectsSection from "@/components/ProjectsSection";
 import ContactSection from "@/components/ContactSection";
 import {
-  TechStack,
   Experience,
   Skills,
   Education,
@@ -18,22 +17,13 @@ export default function Home() {
 
       <main className="relative z-10 mx-auto max-w-6xl px-6 pb-10 pt-32">
         <Hero />
-
         <ProjectsSection />
-
-        <TechStack />
-
         <Experience />
-
         <Skills />
-
         <Education />
-
         <AboutMe />
-
         <ContactSection />
       </main>
-
       <Footer />
     </>
   );
