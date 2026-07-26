@@ -1,7 +1,24 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
+import {
+  FiMail,
+  FiPhone,
+  FiMessageCircle,
+  FiMapPin,
+  FiSend,
+  FiArrowUpRight,
+} from "react-icons/fi";
+import type { IconType } from "react-icons";
+import { Reveal } from "@/components/motion/Reveal";
+import {
+  staggerContainer,
+  fadeUp,
+  reducedMotionFade,
+  hoverLift,
+  tapScale,
+} from "@/lib/motion";
 
 interface ContactFormData {
   name: string;
@@ -20,6 +37,7 @@ const initialFormData: ContactFormData = {
 const ContactSection = () => {
   const [formData, setFormData] =
     useState<ContactFormData>(initialFormData);
+  const prefersReducedMotion = useReducedMotion();
 
   const handleSubmit = (
     event: FormEvent<HTMLFormElement>
@@ -59,28 +77,10 @@ const ContactSection = () => {
       id="contact"
       className="scroll-mt-24 py-16"
     >
-      <motion.div
-        initial={{
-          opacity: 0,
-          y: 30,
-        }}
-        whileInView={{
-          opacity: 1,
-          y: 0,
-        }}
-        viewport={{
-          once: true,
-          margin: "-100px",
-        }}
-        transition={{
-          duration: 0.6,
-        }}
-      >
+      <Reveal>
         <div className="mb-8">
           <div className="mb-4 flex items-center gap-3">
-            <span className="material-symbols-outlined text-3xl text-primary">
-              contact_mail
-            </span>
+            <FiMail aria-hidden="true" className="h-8 w-8 text-primary" />
 
             <h2 className="heading-font text-3xl font-extrabold uppercase tracking-tight md:text-4xl">
               Contact Me
@@ -94,51 +94,63 @@ const ContactSection = () => {
             and interesting web development projects.
           </p>
         </div>
+      </Reveal>
 
-        <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="space-y-4">
-            <ContactCard
-              icon="mail"
-              label="Email Address"
-              value="raselahmediu22@gmail.com"
-              href="mailto:raselahmediu22@gmail.com"
-            />
+      <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+        <motion.div
+          variants={prefersReducedMotion ? reducedMotionFade : staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          className="space-y-4"
+        >
+          <ContactCard
+            Icon={FiMail}
+            label="Email Address"
+            value="raselahmediu22@gmail.com"
+            href="mailto:raselahmediu22@gmail.com"
+            reducedMotion={prefersReducedMotion ?? false}
+          />
 
-            <ContactCard
-              icon="call"
-              label="Phone Number"
-              value="+8801763590999"
-              href="tel:+8801763590999"
-            />
+          <ContactCard
+            Icon={FiPhone}
+            label="Phone Number"
+            value="+8801763590999"
+            href="tel:+8801763590999"
+            reducedMotion={prefersReducedMotion ?? false}
+          />
 
-            <ContactCard
-              icon="chat"
-              label="WhatsApp"
-              value="+8801763590999"
-              href="https://wa.me/8801763590999"
-              external
-            />
+          <ContactCard
+            Icon={FiMessageCircle}
+            label="WhatsApp"
+            value="+8801763590999"
+            href="https://wa.me/8801763590999"
+            external
+            reducedMotion={prefersReducedMotion ?? false}
+          />
 
-            <div className="rounded-2xl border border-slate-200 bg-gradient-to-br from-primary/10 via-white to-secondary/10 p-6 dark:border-slate-800 dark:from-primary/10 dark:via-slate-900 dark:to-secondary/10">
-              <span className="material-symbols-outlined mb-4 text-3xl text-primary">
-                location_on
-              </span>
+          <motion.div
+            variants={prefersReducedMotion ? reducedMotionFade : fadeUp}
+            className="rounded-2xl border border-slate-200 bg-gradient-to-br from-primary/10 via-white to-secondary/10 p-6 dark:border-slate-800 dark:from-primary/10 dark:via-slate-900 dark:to-secondary/10"
+          >
+            <FiMapPin aria-hidden="true" className="mb-4 h-8 w-8 text-primary" />
 
-              <h3 className="heading-font mb-2 text-lg font-bold">
-                Location
-              </h3>
+            <h3 className="heading-font mb-2 text-lg font-bold">
+              Location
+            </h3>
 
-              <p className="text-sm leading-6 text-slate-600 dark:text-slate-300">
-                Bangladesh
-              </p>
+            <p className="text-sm leading-6 text-slate-600 dark:text-slate-300">
+              Bangladesh
+            </p>
 
-              <p className="mt-3 text-xs leading-5 text-slate-500 dark:text-slate-400">
-                Available for remote frontend and full-stack
-                development opportunities.
-              </p>
-            </div>
-          </div>
+            <p className="mt-3 text-xs leading-5 text-slate-500 dark:text-slate-400">
+              Available for remote frontend and full-stack
+              development opportunities.
+            </p>
+          </motion.div>
+        </motion.div>
 
+        <Reveal delay={0.08}>
           <form
             onSubmit={handleSubmit}
             className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900/70 sm:p-7"
@@ -218,51 +230,53 @@ const ContactSection = () => {
               />
             </div>
 
-            <button
+            <motion.button
               type="submit"
-              className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-primary to-secondary px-6 py-3.5 font-bold text-white transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/20 focus:outline-none focus:ring-4 focus:ring-primary/20"
+              whileHover={prefersReducedMotion ? undefined : { y: -2 }}
+              whileTap={prefersReducedMotion ? undefined : tapScale}
+              className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-primary to-secondary px-6 py-3.5 font-bold text-white transition-all hover:shadow-lg hover:shadow-primary/20 focus:outline-none focus:ring-4 focus:ring-primary/20"
             >
-              <span className="material-symbols-outlined">
-                send
-              </span>
+              <FiSend aria-hidden="true" className="h-4 w-4 shrink-0" />
 
               Send Message
-            </button>
+            </motion.button>
           </form>
-        </div>
-      </motion.div>
+        </Reveal>
+      </div>
     </section>
   );
 };
 
 interface ContactCardProps {
-  icon: string;
+  Icon: IconType;
   label: string;
   value: string;
   href: string;
   external?: boolean;
+  reducedMotion: boolean;
 }
 
 const ContactCard = ({
-  icon,
+  Icon,
   label,
   value,
   href,
   external = false,
+  reducedMotion,
 }: ContactCardProps) => {
   return (
-    <a
+    <motion.a
       href={href}
       target={external ? "_blank" : undefined}
       rel={
         external ? "noopener noreferrer" : undefined
       }
-      className="group flex items-center gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all hover:-translate-y-1 hover:border-primary hover:shadow-lg hover:shadow-primary/10 dark:border-slate-800 dark:bg-slate-900/70"
+      variants={reducedMotion ? reducedMotionFade : fadeUp}
+      whileHover={reducedMotion ? undefined : hoverLift}
+      className="group flex items-center gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all hover:border-primary hover:shadow-lg hover:shadow-primary/10 dark:border-slate-800 dark:bg-slate-900/70"
     >
       <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
-        <span className="material-symbols-outlined">
-          {icon}
-        </span>
+        <Icon aria-hidden="true" className="h-5 w-5" />
       </div>
 
       <div className="min-w-0 flex-1">
@@ -275,10 +289,8 @@ const ContactCard = ({
         </p>
       </div>
 
-      <span className="material-symbols-outlined text-slate-400 transition-all group-hover:translate-x-1 group-hover:text-primary">
-        arrow_outward
-      </span>
-    </a>
+      <FiArrowUpRight aria-hidden="true" className="h-4 w-4 shrink-0 text-slate-400 transition-all group-hover:translate-x-1 group-hover:text-primary" />
+    </motion.a>
   );
 };
 

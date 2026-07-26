@@ -1,8 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { FiArrowRight } from "react-icons/fi";
+import { fadeUp, reducedMotionFade, hoverLift } from "@/lib/motion";
 import type { Project } from "@/data/projects";
 
 interface ProjectCardProps {
@@ -10,10 +12,12 @@ interface ProjectCardProps {
 }
 
 const ProjectCard = ({ project }: ProjectCardProps) => {
+  const prefersReducedMotion = useReducedMotion();
+
   return (
     <motion.article
-      whileHover={{ y: -5 }}
-      transition={{ duration: 0.3 }}
+      variants={prefersReducedMotion ? reducedMotionFade : fadeUp}
+      whileHover={prefersReducedMotion ? undefined : hoverLift}
       className="group flex h-full flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 dark:border-slate-800 dark:bg-slate-900/60"
     >
       <div className="relative aspect-video overflow-hidden bg-slate-100 dark:bg-slate-800">
@@ -50,13 +54,11 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
 
         <Link
           href={`/projects/${project.slug}`}
-          className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-gradient-to-r from-primary to-secondary px-3 py-2 text-[10px] font-bold text-white transition-all hover:shadow-lg hover:shadow-primary/20 sm:text-xs"
+          className="group/btn inline-flex items-center justify-center gap-1.5 rounded-lg bg-gradient-to-r from-primary to-secondary px-3 py-2 text-[10px] font-bold text-white transition-all hover:shadow-lg hover:shadow-primary/20 sm:text-xs"
         >
           View Details
 
-          <span className="material-symbols-outlined text-base">
-            arrow_forward
-          </span>
+          <FiArrowRight aria-hidden="true" className="h-4 w-4 shrink-0 transition-transform group-hover/btn:translate-x-0.5" />
         </Link>
       </div>
     </motion.article>
