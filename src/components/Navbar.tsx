@@ -7,6 +7,9 @@ import {
 } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import type { Variants } from "framer-motion";
+import { FiMoon, FiSun, FiMenu, FiX, FiArrowUpRight } from "react-icons/fi";
 
 interface NavigationItem {
   label: string;
@@ -44,8 +47,38 @@ const navigationItems: NavigationItem[] = [
   },
 ];
 
+const mobileMenuVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    y: -10,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.2,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+  exit: {
+    opacity: 0,
+    y: -10,
+    transition: {
+      duration: 0.15,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
+
+const backdropVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { duration: 0.2 } },
+  exit: { opacity: 0, transition: { duration: 0.15 } },
+};
+
 const Navbar = () => {
   const pathname = usePathname();
+  const prefersReducedMotion = useReducedMotion();
 
   const [isDark, setIsDark] = useState(false);
   const [isMenuOpen, setIsMenuOpen] =
@@ -212,6 +245,8 @@ const Navbar = () => {
     closeMenu();
   };
 
+  const useAnimate = !prefersReducedMotion;
+
   return (
     <header className="fixed left-0 top-0 z-50 w-full border-b border-slate-200 bg-white/85 text-slate-900 shadow-sm backdrop-blur-xl dark:border-slate-800 dark:bg-slate-950/85 dark:text-slate-100">
       <nav
@@ -293,11 +328,11 @@ const Navbar = () => {
                 : "Switch to dark mode"
             }
           >
-            <span className="material-symbols-outlined text-xl">
-              {isDark
-                ? "light_mode"
-                : "dark_mode"}
-            </span>
+            {isDark ? (
+              <FiSun aria-hidden="true" className="h-5 w-5" />
+            ) : (
+              <FiMoon aria-hidden="true" className="h-5 w-5" />
+            )}
           </button>
 
           <button
@@ -312,77 +347,87 @@ const Navbar = () => {
             aria-expanded={isMenuOpen}
             aria-controls="mobile-navigation-menu"
           >
-            <span className="material-symbols-outlined text-2xl">
-              {isMenuOpen
-                ? "close"
-                : "menu"}
-            </span>
+            {isMenuOpen ? (
+              <FiX aria-hidden="true" className="h-5 w-5" />
+            ) : (
+              <FiMenu aria-hidden="true" className="h-5 w-5" />
+            )}
           </button>
         </div>
       </nav>
 
-      <button
-        type="button"
-        onClick={closeMenu}
-        aria-label="Close navigation menu"
-        className={`fixed inset-0 top-16 z-40 bg-slate-950/45 backdrop-blur-sm transition-opacity duration-300 lg:hidden ${
-          isMenuOpen
-            ? "visible opacity-100"
-            : "invisible opacity-0"
-        }`}
-      />
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.button
+            type="button"
+            onClick={closeMenu}
+            aria-label="Close navigation menu"
+            variants={useAnimate ? backdropVariants : undefined}
+            initial={useAnimate ? "hidden" : undefined}
+            animate={useAnimate ? "visible" : undefined}
+            exit={useAnimate ? "exit" : undefined}
+            className={`fixed inset-0 top-16 z-40 bg-slate-950/45 backdrop-blur-sm lg:hidden ${
+              !useAnimate ? "opacity-100" : ""
+            }`}
+          />
+        )}
+      </AnimatePresence>
 
-      <div
-        id="mobile-navigation-menu"
-        className={`absolute left-0 right-0 top-16 z-50 border-b border-slate-200 bg-white shadow-xl transition-all duration-300 dark:border-slate-800 dark:bg-slate-950 lg:hidden ${
-          isMenuOpen
-            ? "visible translate-y-0 opacity-100"
-            : "invisible -translate-y-4 opacity-0"
-        }`}
-      >
-        <div className="mx-auto max-w-6xl px-4 py-4 sm:px-6">
-          <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
-            {navigationItems.map((item) => {
-              const isActive =
-                isHomePage &&
-                activeSection ===
-                  item.sectionId;
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            id="mobile-navigation-menu"
+            variants={useAnimate ? mobileMenuVariants : undefined}
+            initial={useAnimate ? "hidden" : undefined}
+            animate={useAnimate ? "visible" : undefined}
+            exit={useAnimate ? "exit" : undefined}
+            className={`absolute left-0 right-0 top-16 z-50 border-b border-slate-200 bg-white shadow-xl dark:border-slate-800 dark:bg-slate-950 lg:hidden ${
+              !useAnimate ? "translate-y-0 opacity-100" : ""
+            }`}
+          >
+            <div className="mx-auto max-w-6xl px-4 py-4 sm:px-6">
+              <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+                {navigationItems.map((item) => {
+                  const isActive =
+                    isHomePage &&
+                    activeSection ===
+                      item.sectionId;
 
-              return (
-                <Link
-                  key={item.sectionId}
-                  href={createSectionLink(
-                    item.sectionId
-                  )}
-                  onClick={() =>
-                    handleNavigationClick(
-                      item.sectionId
-                    )
-                  }
-                  className={`mono-font flex items-center justify-between rounded-xl border px-3 py-3 text-sm font-semibold transition-all ${
-                    isActive
-                      ? "border-primary bg-primary/10 text-primary"
-                      : "border-slate-200 bg-slate-50 text-slate-700 hover:border-primary hover:bg-primary/5 hover:text-primary dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200"
-                  }`}
-                >
-                  <span>{item.label}</span>
+                  return (
+                    <Link
+                      key={item.sectionId}
+                      href={createSectionLink(
+                        item.sectionId
+                      )}
+                      onClick={() =>
+                        handleNavigationClick(
+                          item.sectionId
+                        )
+                      }
+                      className={`mono-font flex items-center justify-between rounded-xl border px-3 py-3 text-sm font-semibold transition-all ${
+                        isActive
+                          ? "border-primary bg-primary/10 text-primary"
+                          : "border-slate-200 bg-slate-50 text-slate-700 hover:border-primary hover:bg-primary/5 hover:text-primary dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200"
+                      }`}
+                    >
+                      <span>{item.label}</span>
 
-                  <span className="material-symbols-outlined text-base">
-                    arrow_outward
-                  </span>
-                </Link>
-              );
-            })}
-          </div>
+                      <FiArrowUpRight aria-hidden="true" className="h-4 w-4 shrink-0" />
+                    </Link>
+                  );
+                })}
+              </div>
 
-          <div className="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-3 dark:border-slate-800 dark:bg-slate-900">
-            <p className="text-center text-xs leading-5 text-slate-500 dark:text-slate-400">
-              Frontend Developer | MERN Stack
-              &amp; Full-Stack Enthusiast
-            </p>
-          </div>
-        </div>
-      </div>
+              <div className="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-3 dark:border-slate-800 dark:bg-slate-900">
+                <p className="text-center text-xs leading-5 text-slate-500 dark:text-slate-400">
+                  Frontend Developer | MERN Stack
+                  &amp; Full-Stack Enthusiast
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 };
