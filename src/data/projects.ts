@@ -23,6 +23,104 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+  slug: "agrinova",
+
+  title: "AgriNova",
+
+  shortDescription:
+    "A smart agriculture and digital farming platform that helps farmers manage farms, access AI-powered tools, sell agricultural products, connect with experts, explore investment opportunities, and make data-driven farming decisions.",
+
+  fullDescription:
+    "AgriNova is a full-stack smart agriculture and digital farming platform designed to bring essential farming services into one centralized system. Farmers can manage farms, access AI-powered disease detection and smart farming recommendations, use an AI farming assistant, participate in the agricultural community, sell products through the marketplace, manage seller orders, monitor finance and weather information, seek agricultural investment, and book consultations with verified experts. The platform also includes dedicated role-based dashboards for Farmers, Experts, and Admins, secure authentication, blog management, notifications, B2B support, investment management, and responsive user interfaces.",
+
+  image: "/projects/agrinova.jpg",
+
+  tags: [
+    {
+      name: "Next.js",
+      color: "bg-black text-white border-black",
+    },
+    {
+      name: "TypeScript",
+      color: "bg-blue-100 text-blue-700 border-blue-300",
+    },
+    {
+      name: "AI Integration",
+      color: "bg-purple-100 text-purple-700 border-purple-300",
+    },
+    {
+      name: "MongoDB",
+      color: "bg-green-100 text-green-700 border-green-300",
+    },
+  ],
+
+  technologies: [
+    "Next.js",
+    "React",
+    "TypeScript",
+    "Tailwind CSS",
+    "Node.js",
+    "Express.js",
+    "MongoDB",
+    "Mongoose",
+    "REST API",
+    "Better Auth",
+    "JWT Authentication",
+    "Gemini AI",
+    "ImgBB",
+    "Lucide React",
+    "React Icons",
+  ],
+
+  mainFeatures: [
+    "Role-based dashboards for Farmers, Experts, and Admins.",
+    "AI-powered crop disease detection and smart farming recommendations.",
+    "Interactive AI farming assistant for agricultural guidance.",
+    "Farm management with location and farming activity information.",
+    "Agricultural marketplace with product listing, selling, and seller order management.",
+    "Farmer and expert community with posts, images, videos, likes, comments, and replies.",
+    "Expert consultation system with expert profiles, availability schedules, and booking.",
+    "Agricultural investment system with investment opportunities, comments, and view tracking.",
+    "Expert-managed agricultural blog with articles, author profiles, comments, and views.",
+    "Weather, finance, notifications, B2B support, and farmer investment features.",
+  ],
+
+  challenges: [
+    "Implementing secure role-based access for Farmer, Expert, and Admin dashboards.",
+    "Integrating multiple AI-powered farming features into the farmer dashboard.",
+    "Building a community system with posts, media uploads, likes, comments, and profile synchronization.",
+    "Keeping user and expert profile pictures synchronized across the navbar, dashboard, community, blog, and expert sections.",
+    "Handling authentication issues, expired tokens, and 401 API errors.",
+    "Managing marketplace flows so sellers see only their own products and seller orders.",
+    "Merging frontend and backend changes while resolving TypeScript, API, and Git conflicts.",
+    "Building reusable components while maintaining consistent responsive design across a large application.",
+  ],
+
+  futurePlans: [
+    "Add more advanced AI-based crop diagnosis and recommendation models.",
+    "Integrate real-time IoT and smart farming sensor data.",
+    "Improve weather forecasting and location-based farming recommendations.",
+    "Add advanced analytics for farm productivity, finance, and crop performance.",
+    "Expand the expert consultation system with ratings and consultation history.",
+    "Introduce real-time notifications and communication between farmers and experts.",
+    "Expand B2B agricultural supply-chain and logistics capabilities.",
+    "Improve marketplace recommendations using farmer activity and purchase history.",
+  ],
+
+  liveLink:
+    "https://agrinova-client-theta.vercel.app/",
+
+  clientRepo:
+    "https://github.com/raselahmed2023/agrinova-client",
+
+  serverRepo:
+    "https://github.com/raselahmed2023/agrinova-server",
+
+  clientLabel: "Client Code",
+
+  serverLabel: "Server Code",
+},
+  {
     slug: "tripmind",
     title: "TripMind",
     shortDescription:
