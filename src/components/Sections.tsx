@@ -31,6 +31,18 @@ export const Experience = () => {
   const prefersReducedMotion = useReducedMotion();
 
   const experienceItems = [
+     {
+      role: "Front-end AI Engineering Intern",
+      organization: "FlyRank AI",
+      period: "July 2026 – August 2026",
+      type: "AI Engineering Internship",
+      Icon: FiCpu,
+      responsibilities: [
+        "Completed 22 hands-on assignments and the Front-end AI Engineering capstone.",
+        "Built production-style AI frontend projects using React, Next.js, TypeScript, AI SDK, and streaming interfaces.",
+        "Worked with real AI interface states including loading, streaming, errors, retries, interruptions, recovery, testing, accessibility, and performance optimization.",
+      ],
+    },
     {
       role: "Co-Founder & Assistant Director",
       organization: "Paridhi",
