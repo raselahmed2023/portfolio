@@ -56,19 +56,6 @@ export const Experience = () => {
       ],
     },
     {
-      role: "Design & IT Secretary",
-      organization:
-        "Islamic University Accounting Club",
-      period: "July 2024 – August 2025",
-      type: "Design & IT",
-      Icon: FiMonitor,
-      responsibilities: [
-        "Created visual and digital content.",
-        "Managed social media activities.",
-        "Provided IT and event support.",
-      ],
-    },
-    {
       role: "Content Writing Intern",
       organization: "Requin BD",
       period: "April 2025 – September 2025",
